@@ -10,7 +10,7 @@
  
  
  .header{
-     background:url('../img/bg_top.png') no-repeat;
+     background:url('../img/header_bg_blanco.png') no-repeat;
      width: 940px;
      height: 104px;
      margin: 0px 0 0px 0;
@@ -32,14 +32,14 @@
  }
 .content-2{
      width: 940px;
-     height: 300px;
+     height: auto;
      margin: 5px 0 10px 0px;
      display:block;
  }
 .content-left-box{
      width: 430px;
      height: auto;
-     min-height: 230px;
+     min-height: 520px;
      margin-left: 20px;
      padding: 20px 5px 10px 20px;
      -webkit-border-radius: 18px;
@@ -84,7 +84,7 @@
  }
  .content-3{
      width: 940px;
-     height: 310px;
+     height: auto;
      margin: 5px 0 10px 0px;
      display:block;
  }
@@ -442,7 +442,7 @@ a:hover {
 }
 
 .span11 {
-  width: 860px;
+  width: 890px;
 }
 
 .span10 {
