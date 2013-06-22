@@ -3,7 +3,7 @@
 <html>
   <head>
      
-    <title>BiosGroup - Contacto</title>
+    <title>BiosGroup - Contáctenos</title>
     <?php include './inc/header.php'; ?>
     <style>   
         a {
@@ -53,16 +53,16 @@
                       <label class="control-label" for="apellidos">Apellidos: </label>
                       <div class="controls"><input type="text" id="apellido" class="input-xlarge" name="apellido" required placeholder="Apellidos"></div>
                       <br><!-- /Empresa -->                      
-                      <label class="control-label" for="empresa">Empresa</label>
+                      <label class="control-label" for="empresa">Empresa:</label>
                       <div class="controls"><input type="text" id="empresa" class="input-xlarge" placeholder="Empresa"></div>
                       <br><!-- /Telefono -->                      
-                      <label class="control-label" for="telefono">Teléfono</label>
+                      <label class="control-label" for="telefono">Teléfono:</label>
                       <div class="controls"><input type="text" id="telefono" class="input-xlarge" name="telefono" placeholder="Telefono"></div>
                       <br><!-- /Email -->                      
-                      <label class="control-label" for="email">Email</label>
+                      <label class="control-label" for="email">Email:</label>
                       <div class="controls"><input type="email" id="email" class="input-xlarge" name="email" placeholder="Email" required></div>
                       <br><!-- /Consulta -->                      
-                      <label class="control-label" for="consulta">Consulta</label>
+                      <label class="control-label" for="consulta">Consulta:</label>
                       <div class="controls"><textarea rows="4" id="consulta" class="input-xlarge" name="consulta" required ></textarea>
                       <!-- /Enviar -->         
                       <br><br><button class="btn btn-large" id="btn-enviar" name="enviar" type="button">Enviar</button></div>

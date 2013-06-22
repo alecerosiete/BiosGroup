@@ -44,15 +44,15 @@
          </div>
           <style>
               .model_1{
-                    background: url(../img/prod_1.jpg);
+                    background: url(<?=RUTA_RAIZ ?>/img/prod_1.jpg);
                    
                 }
                 .model_2{
-                    background: url(../img/prod_2.jpg);
+                    background: url(<?=RUTA_RAIZ ?>/img/prod_2.jpg);
                    
                 }
                 .model_3{
-                    background: url(../img/prod_3.jpg);
+                    background: url(<?=RUTA_RAIZ ?>/img/prod_3.jpg);
                    
                 }
               .producto_model_more{
