@@ -1,14 +1,10 @@
-<?php include './inc/header.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
      
     <title>BiosGroup - Contacto</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="./css/bootstrap.css" rel="stylesheet">
-    
+    <?php include './inc/header.php'; ?>
     <style>   
         a {
             text-decoration: none;
@@ -42,59 +38,46 @@
 			</object>
           
          </div>
-           <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">CONTACTO</h2>
+           <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">CONTÁCTENOS</h2>
           <div class="container">
             <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
-               
+                <p>Si desea hacernos alguna consulta, sugerencia o pedido, le invitamos a completar el siguiente formulario, su consulta nos interesa, muchas gracias.</p>
+                
+                <div class="formulario_contactos">
+                   <form class="form-horizontal">
+                    <div class="control-group">
+                      <!-- /Nombres -->
+                      <label class="control-label" for="nombres">Nombres: </label>
+                      <div class="controls"><input type="text" class="input-xlarge" id="nombre" placeholder="Nombres" required></div>
+                      <br><!-- /Apellidos -->
+                      <label class="control-label" for="apellidos">Apellidos: </label>
+                      <div class="controls"><input type="text" id="apellido" class="input-xlarge" name="apellido" required placeholder="Apellidos"></div>
+                      <br><!-- /Empresa -->                      
+                      <label class="control-label" for="empresa">Empresa</label>
+                      <div class="controls"><input type="text" id="empresa" class="input-xlarge" placeholder="Empresa"></div>
+                      <br><!-- /Telefono -->                      
+                      <label class="control-label" for="telefono">Teléfono</label>
+                      <div class="controls"><input type="text" id="telefono" class="input-xlarge" name="telefono" placeholder="Telefono"></div>
+                      <br><!-- /Email -->                      
+                      <label class="control-label" for="email">Email</label>
+                      <div class="controls"><input type="email" id="email" class="input-xlarge" name="email" placeholder="Email" required></div>
+                      <br><!-- /Consulta -->                      
+                      <label class="control-label" for="consulta">Consulta</label>
+                      <div class="controls"><textarea rows="4" id="consulta" class="input-xlarge" name="consulta" required ></textarea>
+                      <!-- /Enviar -->         
+                      <br><br><button class="btn btn-large" id="btn-enviar" name="enviar" type="button">Enviar</button></div>
+                      <br>
+                      
+                    </div>
+                 </form>
+                </div>
+                
+                
+                
                 <div class="clearfix"></div>
             </div>
           </div>
-         <!--div class="content-3">
-             <div class="box">
-                 <div class="box-title">
-                    <img src="./img/ae_bg.png"> 
-                 </div>
-                 <div class="box-content-ae-bg">
-                     Hemos creado un departamento a<br>
-                     disposición de nuestros clientes<br>
-                     para ofrecer un asesoramiento<br>
-                     personalizado para análisis y<br>
-                     diseño, que le permitirá<br>
-                     en cada caso, conocer<br>
-                     de forma práctica<br>
-                     como implementar nuevas<br>
-                     tecnologias, acorde a las<br>
-                     necesidades de su empresa.
-                 </div>
-                  
-             </div>
-              <div class="box">
-                 <div class="box-title">
-                    <img src="./img/efi_bg.png">
-                 </div>
-                 <div class="box-content-ef-bg">
-                     Todos estos servicios se los ofrecems<br>
-                     con la máxima seriedad, rapidez y<br>
-                     seguridad, apoyados por el<br>
-                     asesoramiento de un equipo de<br>
-                     pofesionales especializados<br>
-                     en el tema y ue permanecen<br> 
-                     siempre a su disposición<br>
-                     para ofrecerle un<br>
-                     buen servicio.
-                 </div>
-             </div>
-              <div class="box">
-                 <div class="box-title">
-                    <img src="./img/eco_bg.png">
-                 </div>
-                 <div class="box-content-eco-bg">
-                     Todos nuestros trabajos están enfocados<br>
-                     a ofrecerle unos productos y servicios de<br>
-                     calidad a un buen precio.
-                 </div>
-             </div>
-         </div-->
+         
          <div class="footer">
              
          </div>

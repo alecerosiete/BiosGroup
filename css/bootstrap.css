@@ -7,7 +7,50 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
- 
+.formulario_contactos{
+    margin-left:20%;
+}
+.representaciones{
+    border:8px solid #dfdfdf;
+    background: url(../img/representaciones_bg.jpg);
+    width:862px;
+    height: 361px;
+    
+}
+ .producto{
+    width: 263px;
+    height: 365px;
+    border:8px solid #dfdfdf;
+    margin: 6px;
+    float:left;
+}
+.producto_img{
+
+    height: 287px;
+}
+.producto_desc{
+    height: 77px;
+    background: url(../img/productos_title_bg.jpg);
+    color:#fff;
+}
+.producto_more{
+    text-align: right;
+      width: 250px;
+      height: 20px;
+      padding-top: 260px;
+      margin-right: 37px;
+      color:#fff;
+      font-weight: bold;
+}
+.prod_1{
+    background: url(../img/prod_1.jpg);
+}
+ .prod_2{
+    background: url(../img/prod_2.jpg);
+}
+ .prod_3{
+    background: url(../img/prod_3.jpg);
+}
  
  .header{
      background:url('../img/header_bg_blanco.png') no-repeat;
