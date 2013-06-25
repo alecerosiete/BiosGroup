@@ -280,6 +280,32 @@ function getBannerNovedades(){
     return $banner;
 }
 
+function getCategory(){
+    $db = conect();
+    $sql = "SELECT * FROM category";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $category = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $category;
+}
+
+function saveNewCategory($name,$title,$description,$image_name,$active){
+    $db = conect();
+    $sql = "INSERT INTO category(id,name,title,image,description,active,registered)VALUES(NULL,'$name','$title','$image_name','$description',$active,now());";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute())
+        error_log("OK");
+    else {
+        error_log("NO");
+    }
+    $db = null;
+    error_log($sql);
+    
+}
+
 function getTituloNovedades(){
     $db = conect();
     $sql = "SELECT news_title FROM news_gral";

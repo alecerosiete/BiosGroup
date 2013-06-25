@@ -2,7 +2,6 @@
 require './inc/session.inc';
 assertUser();
 $user = getUser();
-//print_r($user);
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
@@ -11,16 +10,8 @@ $tipo_usuario = $user['data']['tipo_de_usuario'];
 
 $userInfo = getUserInfo();
 
-$ciudad = getCiudad($userInfo[0]['CIUDAD']);
-
-$localidad = getLocalidad($userInfo[0]['LOCALIDAD']);
-
-$barrio = getBarrio($userInfo[0]['BARRIO']);
-
-
 $role = getRole(ROLE_PENSIONADO);
 
-//print_r($role);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,19 +36,54 @@ $role = getRole(ROLE_PENSIONADO);
         
 </head>
   <body>
-    <?php include './inc/menu.php';?>
+      <?php  include './inc/menu.php';?>
+    
 
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Panel de administracion de Contenidos.</h1><br>
-        <p> Mediante este panel podra actualizar toda la inforamcion relacionada al portal www.biosgroup.com.py, podra crear categorias, productos y agregar informacion, fotografias y novedades como contenido del sitio.</p>
-        
+        <h1>Administracion de Productos.</h1>
+        <div align="right">
+            <a href="./new-product.php" class="btn btn-large">Nuevo</a>
+        </div>
+         <table class="table table-hover">
+            <thead>
+                <tr>
+                    <?php 
+                    $a_category = getCategory();
+                    if(empty($a_category)){
+                           echo "<div class='alert alert-danger'>No se encontraron registros </div>";
+                    }else{
+                    ?>
+                    <th width="20%">ID</th>
+                    <th width="40%">Nombre</th>
+                    <th width="40%">Activo</th>
+                    <th width="40%">Editar</th>
+                    <th width="20%">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $html = "";
+                       foreach ($a_category as $category) {
+
+                            $html .= "<tr><td>".$category['id']."</td>";
+                            $html .= "<td>".$category['name']."</td>";
+                            $html .= "<td>".$category['registered']."</td>";
+                            $html .= "<td><input type='button' class='btn' value='Activar' onclick='(btn_active_category(".$category['id']."))'/></td>";
+                            $html .= "<td><input type='button' class='btn' value='Editar' onclick='(btn_edit_category(".$category['id']."))'/></td>";
+                            $html .= "<td><input type='button' class='btn' value='Borrar' onclick='(btn_delete_category(".$category['id']."))'/></td></tr>";
+                        }    
+                    }
+                ?>
+            </tbody>
+
+        </table>  
       </div>
 
       <!-- Example row of columns -->
-      <div class="row">
+      <!--div class="row">
         <div class="span4">
           <h2>Categorias</h2>
           <p>Administre las categorias de productos, puede crear una nueva categoria para luego agrupar productos  mostrarlos en la seccion de Productos del sitio. </p>
@@ -73,7 +99,7 @@ $role = getRole(ROLE_PENSIONADO);
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
         </div>
-      </div>
+      </div-->
 
       <hr>
 

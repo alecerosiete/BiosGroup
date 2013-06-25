@@ -3,9 +3,9 @@
 session_start();
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'cajaweb');
-define('DB_USER', 'caja');
-define('DB_PASSWORD', 'caja');
+define('DB_NAME', 'BiosGroup');
+define('DB_USER', 'biosgroup');
+define('DB_PASSWORD', 'biosgroup');
 
 define('ROLE_SYSTEM', 'Administrador');
 define('ROLE_AFILIADO', 'Activo');

@@ -7,7 +7,7 @@ session_destroy();
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Acceso - Caja Bancaria</title>
+    <title>Acceso - BiosGroup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -51,7 +51,7 @@ session_destroy();
      </head>
 
   <body>
-<div align="center" style="height: 125px; width: 435px;margin-left: auto;margin-right: auto;background:url('./resources/images/logo.png') no-repeat"></div>
+<div align="center" style="height: 125px; width: 435px;margin-left: auto;margin-right: auto;"></div>
     <div class="container" >
         
       <form class="form-signin" action="./actions/login.do.php" method="post">

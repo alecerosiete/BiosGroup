@@ -23,11 +23,7 @@
 
 
 /* header style */
-.header-caja-bancaria{
-    height: 125px;
-    width: 100%;
-    background: url('../../../images/logo.png') no-repeat;
-}
+
 
 .btn-logout{
     margin-top: 10px;
@@ -262,7 +258,7 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
-  background:url('../../../images/bg.png') repeat-x ;
+  /*background:url('../../../images/bg.png') repeat-x ;*/
 }
 
 a {

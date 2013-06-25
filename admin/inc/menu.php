@@ -3,54 +3,38 @@
 //$user = getUser();
 
 ?>
-<style type="text/css">
-    .navigation li ul li {
-        width:159px;
-    }
-    
-
-    
-</style>
-    <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="navigation">
-                    <li><a href="./index.php">Inicio</a></li>
-                    
-                    <li><a href="#">Beneficiarios</a>
-                        <ul>
-                            <?php if(getRole(ROLE_JUBILADO) || getRole(ROLE_PENSIONADO)) echo "<li><a href='./jubilados.php'>Pagos</a></li>"; ?>
-                            <li><a href="./prestamos.php">Prestamos</a></li>
-                            <li><a href="./tarjetas-de-credito.php">Tarjetas de Credito</a></li>
-                            <?php if(getRole(ROLE_JUBILADO) || getRole(ROLE_AFILIADO)){
-                              echo "<li><a href='./aportes.php'>Aportes</a></li>";  
-                            } else if(getRole(ROLE_PENSIONADO)){
-                                
-                            } ?>
-                        </ul>
-                        <div class="clear"></div>
-                    </li>
-                   
-                    <li><a href="./estados-de-cuenta.php">Estados de Cuenta</a></li>
-                    <?php if(getPerfil(ROLE_DIRECTIVO)){
-                        echo "<li><a href='./consultas.php'>Buscar</a></li>";  
-                    }else if(getPerfil(ROLE_SYSTEM)){ ?>
-                        <li><a href='./users.php'>Usuarios</a>
-                        <ul>
-                            <li><a href="./banner-admin.php">Banner</a></li>
-                            
-                        </ul>
-                         <div class="clear"></div>
-                         </li>
-                    <?php
-                    } 
-                    ?>
-                    <li><a href="./reservaciones.php">Reservaciones</a></li>
-                    <li><a href="#">Inmuebles</a></li>
-                    
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.php">BiosGroup</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="./index.php">Home</a></li>
+              <li><a href="./category.php">Categorias</a></li>
+              <li><a href="./product.php">Productos</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Usuarios</a></li>
+                  <li><a href="#">Mi cuenta</a></li>
+                  <li><a href="#">Ayuda</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Session</li>
+                  <li><a href="#">Salir</a></li>
+                  
                 </ul>
-
-                <div class="clear"></div>
-            </div>
-          </div>
+              </li>
+            </ul>
+            <form class="navbar-form pull-right">
+                <div style="color:#fff;padding-top:10px;margin-right: 10px;float:left">Conectado como: <?= $user['data']['nombre'] ?></div>
+                 <a style="float:left" href="./login.php" class="btn btn-warning">Salir</a>
+           </form>
+          </div><!--/.nav-collapse -->
         </div>
+      </div>
+    </div>

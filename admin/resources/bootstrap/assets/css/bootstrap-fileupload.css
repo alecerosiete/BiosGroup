@@ -53,7 +53,7 @@
 }
 .fileupload {
   margin-bottom: 9px;
-  margin-left: 20%;
+  /*margin-left: 20%;*/
 }
 .fileupload .uneditable-input {
   display: inline-block;

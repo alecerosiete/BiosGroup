@@ -2,38 +2,48 @@ $(document).ready(function(){
     /* PDDIRWEB DATA CHARGING */
     
     /* Boton guardar info de banner */
-    $('#btn-guardar-banner').click(function(){
+    $('#btn-save-new-category').click(function(){
        
-        var titulo = $("#titulo-banner").val();
-        var texto = $("#texto-banner").val();
-        var nombre_imagen = $("#banner").val().split('\\').pop();
-        var extension = nombre_imagen.split('.').pop();
+        var name = $("#category-name").val();
+        var title = $("#category-title").val();
+        var description = $("#category-description").val();
+        var image_name = $("#image_category").val().split('\\').pop();
+        var extension = image_name.split('.').pop();
+        var active = $('#state').val(); 
+        alert(name+title+description+image_name+extension+active)
         //validar que sean solo archivos imagen
         var validos = ["jpg", "png", "gif","jpeg"];
         if($.inArray(extension, validos) == -1){
             alert("Formato inválido de imagen, especifique otra imagen");
-
-        }else if(titulo.length == 0){
+            return false;
+        }else if(title.length == 0){
             alert("Especifique un titulo");
-        }else if(texto.length == 0){
-            alert("Especifique un texto");
+            return false;
+        }else if(name.length == 0){
+            alert("Especifique un nombre");
+            return false;
+        }else if(description.length == 0){
+            alert("Especifique una descripcion");
+            return false;
         }else{
-            uploadFile('banner','archivo');        
+                    
             $.ajax({
                type: "POST",
-               url: "./actions/save-banner-novedades.php",
+               url: "./actions/new-category-action.php",
                data: {
-                   titulo:titulo,
-                   texto:texto,
-                   nombre_imagen:nombre_imagen
+                   title:title,
+                   name:name,
+                   description:description,
+                   active:active,
+                   image_name:image_name
 
                }
-               }).done(function() {
-
-                   alert("Guardado");
-                   window.location = "./banner-admin.php";
-               });
+            })
+           
+           
         }
+        
+       
     });
     
     
