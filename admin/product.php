@@ -27,7 +27,16 @@ $role = getRole(ROLE_PENSIONADO);
             padding-top: 60px;
             padding-bottom: 40px;
           }
+          #msg-success{
+              width: 200px;
+              height: 60px;
+              vertical-align: middle;
+              display:table-cell;
+              font-size: 16px;
+              font-weight: bold;
+              text-shadow: 2px 2px 2px #fff;
 
+          }
       </style>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -40,42 +49,47 @@ $role = getRole(ROLE_PENSIONADO);
     
 
     <div class="container">
-
+<div id="msg" style="position: absolute ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%"></div>
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Administracion de Productos.</h1>
         <div align="right">
-            <a href="./new-product.php" class="btn btn-large">Nuevo</a>
+            <a href="./new-product.php" class="btn btn-large">Nuevo</a><hr>
         </div>
          <table class="table table-hover">
             <thead>
-                <tr>
+                <tr >
                     <?php 
-                    $a_category = getCategory();
-                    if(empty($a_category)){
+                    $a_products = getProducts();
+                    if(empty($a_products)){
                            echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                     }else{
                     ?>
-                    <th width="20%">ID</th>
-                    <th width="40%">Nombre</th>
-                    <th width="40%">Activo</th>
-                    <th width="40%">Editar</th>
-                    <th width="20%">Borrar</th>
+                    <th width="5%">ID</th>
+                    <th width="30%">Nombre</th>
+                    <th width="30%">Categoria</th>
+                    <th width="15%">Creado</th>                    
+                    <th width="10%" style="text-align: center">Activo</th>
+                    <th width="8%" style="text-align: center">Editar</th>
+                    <th width="8%" style="text-align: center">Borrar</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $html = "";
-                       foreach ($a_category as $category) {
+                       foreach ($a_products as $product) {
 
-                            $html .= "<tr><td>".$category['id']."</td>";
-                            $html .= "<td>".$category['name']."</td>";
-                            $html .= "<td>".$category['registered']."</td>";
-                            $html .= "<td><input type='button' class='btn' value='Activar' onclick='(btn_active_category(".$category['id']."))'/></td>";
-                            $html .= "<td><input type='button' class='btn' value='Editar' onclick='(btn_edit_category(".$category['id']."))'/></td>";
-                            $html .= "<td><input type='button' class='btn' value='Borrar' onclick='(btn_delete_category(".$category['id']."))'/></td></tr>";
+                            $html .= "<tr><td>".$product['id']."</td>";
+                            $html .= "<td>".$product['title']."</td>";
+                            $html .= "<td>".$product['category_name']."</td>";
+                            $html .= "<td>".$product['registered']."</td>";
+                            $label = $product['active'] == 1 ? 'Desactivar' : 'Activar';
+                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$product['id']."' onclick='(btn_active_product(".$product['id']."))'/></td>";
+                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='Editar' onclick='(btn_edit_product(".$product['id']."))'/></td>";
+                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_product(".$product['id']."))'/></td></tr>";
                         }    
                     }
+                    echo $html;
                 ?>
             </tbody>
 

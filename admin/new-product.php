@@ -45,25 +45,26 @@ $role = getRole(ROLE_PENSIONADO);
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Agregar nuevo producto.</h1><hr>
-        <form action="#" method="POST">
+       <form name="save-form-new-product" action="./actions/new-img-product-action.php" method="POST" enctype="multipart/form-data">
                <!-- Example row of columns -->
                 <div class="row">
                   <div class="span4">
                     <h3>Titulo</h3>
                     <input type="text" name="product-title" style="width:280px" id="product-title" required placeholder="Titulo para el producto">
                     <h3>Categoria</h3>
-                     <select name="categoria" placeholder="Seleccione una categoria"  id="categoria">
-                         <?php $category_option = getCategory(); 
+                     <select name="product-category" placeholder="Seleccione una categoria"  id="product-category-id">
+                         <?php 
                             $a_category = getCategory();
                             if(empty($a_category)){
                                    echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                             }else{ 
-                                
-                         ?>
-                         <option value="<?=$category_option['id']?>"><?=$category_option['name']?></option>                         
-                         <?php 
+                           
+                                foreach ($a_category as $category) { ?>                         
+                                    <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
+                                <?php 
+                                }
                             }
-                         ?>
+                            ?>
                      </select>
                              
                     <h3>Descripcion</h3>
@@ -88,9 +89,9 @@ $role = getRole(ROLE_PENSIONADO);
                   
                  <div class="span3">
                      <h3>Estado</h3>
-                     <select name="state" id="state">
-                         <option value="Activo">Activo</option>
-                         <option value="Inactivo">Inactivo</option>
+                     <select name="product-state" id="product-state">
+                         <option value="1">Activo</option>
+                         <option value="0">Inactivo</option>
                      </select>
                      <p>Puede activarlo mas tarde</p>
                      <hr>

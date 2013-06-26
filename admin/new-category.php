@@ -76,7 +76,7 @@ $role = getRole(ROLE_PENSIONADO);
                   
                  <div class="span3">
                      <h3>Estado</h3>
-                     <select name="state" id="state">
+                     <select name="category-state" id="category-state">
                          <option value="1">Activo</option>
                          <option value="0">Inactivo</option>
                      </select>

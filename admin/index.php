@@ -11,12 +11,6 @@ $tipo_usuario = $user['data']['tipo_de_usuario'];
 
 $userInfo = getUserInfo();
 
-$ciudad = getCiudad($userInfo[0]['CIUDAD']);
-
-$localidad = getLocalidad($userInfo[0]['LOCALIDAD']);
-
-$barrio = getBarrio($userInfo[0]['BARRIO']);
-
 
 $role = getRole(ROLE_PENSIONADO);
 
@@ -61,12 +55,12 @@ $role = getRole(ROLE_PENSIONADO);
         <div class="span4">
           <h2>Categorias</h2>
           <p>Administre las categorias de productos, puede crear una nueva categoria para luego agrupar productos  mostrarlos en la seccion de Productos del sitio. </p>
-          <p><a class="btn btn-primary" href="#">Ingresar &raquo;</a></p>
+          <p><a class="btn btn-primary" href="./category.php">Ingresar &raquo;</a></p>
         </div>
         <div class="span4">
           <h2>Productos</h2>
           <p>Administre sus productos, agregue, edite o elimine, puede agregar un numero infinito de productos asignando una categoria. </p>
-          <p><a class="btn btn-primary"  href="#">Ingresar &raquo;</a></p>
+          <p><a class="btn btn-primary"  href="./product.php">Ingresar &raquo;</a></p>
        </div>
         <div class="span4">
           <h2>Otro</h2>

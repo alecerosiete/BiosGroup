@@ -291,6 +291,18 @@ function getCategory(){
     return $category;
 }
 
+
+function getProducts(){
+    $db = conect();
+    $sql = "SELECT * FROM product";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $products = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
 function saveNewCategory($name,$title,$description,$image_name,$active){
     $db = conect();
     $sql = "INSERT INTO category(id,name,title,image,description,active,registered)VALUES(NULL,'$name','$title','$image_name','$description',$active,now());";
@@ -300,6 +312,51 @@ function saveNewCategory($name,$title,$description,$image_name,$active){
         error_log("OK");
     else {
         error_log("NO");
+    }
+    $db = null;
+    error_log($sql);
+    
+}
+
+function saveNewproduct($title,$description,$image_name,$active,$product_category_id,$product_category_name){
+    $db = conect();
+    $sql = "INSERT INTO product(id,category_id,category_name,title,description,image,image_icon,active,registered,lastUpdate) VALUES(NULL,$product_category_id,'$product_category_name','$title','$description','$image_name','$image_name',$active,now(),now());";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute())
+        error_log("OK");
+    else {
+        error_log("NO");
+    }
+    $db = null;
+    error_log($sql);
+    
+}
+
+function updateCategoryState($id,$state){
+    $db = conect();
+    $sql = "UPDATE category SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute())
+        echo("OK");
+    else {
+        echo("NO");
+    }
+    $db = null;
+    error_log($sql);
+    
+}
+
+function updateProductState($id,$state){
+    $db = conect();
+    $sql = "UPDATE product SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute())
+        echo("OK");
+    else {
+        echo("NO");
     }
     $db = null;
     error_log($sql);

@@ -1,7 +1,10 @@
 $(document).ready(function(){
-    /* PDDIRWEB DATA CHARGING */
+   
     
-    /* Boton guardar info de banner */
+    
+    
+    
+    /* Boton guardar nueva categoria */
     $('#btn-save-new-category').click(function(){
        
         var name = $("#category-name").val();
@@ -9,7 +12,7 @@ $(document).ready(function(){
         var description = $("#category-description").val();
         var image_name = $("#image_category").val().split('\\').pop();
         var extension = image_name.split('.').pop();
-        var active = $('#state').val(); 
+        var active = $('#category-state').val(); 
         alert(name+title+description+image_name+extension+active)
         //validar que sean solo archivos imagen
         var validos = ["jpg", "png", "gif","jpeg"];
@@ -45,6 +48,53 @@ $(document).ready(function(){
         
        
     });
+    /* Fin guardar categoria */
+    
+    /* Boton guardar nuevo producto */
+    $('#btn-save-new-product').click(function(){
+       
+        var title = $("#product-title").val();
+        var description = $("#product-description").val();
+        var product_category_id = $('#product-category-id :selected').val();
+        var product_category_name = $('#product-category-id :selected').text();
+        
+        var image_name = $("#product_img").val().split('\\').pop();
+        var extension = image_name.split('.').pop();
+        var active = $('#product-state').val(); 
+        alert(title+description+image_name+extension+active+product_category_id)
+        //validar que sean solo archivos imagen
+        var validos = ["jpg", "png", "gif","jpeg"];
+        if($.inArray(extension, validos) == -1){
+            alert("Formato inválido de imagen, especifique otra imagen");
+            return false;
+        }else if(title.length == 0){
+            alert("Especifique un titulo");
+            return false;
+        }else if(description.length == 0){
+            alert("Especifique una descripcion");
+            return false;
+        }else{
+                    
+            $.ajax({
+               type: "POST",
+               url: "./actions/new-product-action.php",
+               data: {
+                   title:title,
+                   product_category_id:product_category_id,
+                   product_category_name:product_category_name,
+                   description:description,
+                   active:active,
+                   image_name:image_name
+
+               }
+            })
+           
+           
+        }
+        
+       
+    });
+    /* Fin guardar producto*/
     
     
     /* Guardar novedades */
@@ -257,7 +307,6 @@ $(document).ready(function(){
     
     $(".alert-msg-show").delay(4000).hide("fade",3000)
     $("#error-panel").delay(4000).hide("fade",3000)
-    
     $("#btn-edit-user-data").click(function(){
             var ci = $("#ci-info").val();
             
@@ -307,3 +356,88 @@ function btn_borrar_banner(id){
     });
 }
 
+ /* Boton activar Categoria */
+function btn_active_category(category_id){
+    var active = 0;
+    var activate_label = $('#activate_'+category_id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_'+category_id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_'+category_id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-category-state.php",
+            data: {
+                category_id:category_id,
+                active:active
+            },
+            success: function(data){
+                var msg = "";
+                if(data == "OK"){
+                    
+                    msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                }else{
+                    msg += "<div id='msg-success' class='alert alert-danger'>Ocurrio un error!</div>";
+                }   
+              
+              
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+    
+}
+
+
+ /* Boton activar producto */
+function btn_active_product(product_id){
+    
+    var active = 0;
+    var activate_label = $('#activate_'+product_id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_'+product_id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_'+product_id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-product-state.php",
+            data: {
+                product_id:product_id,
+                active:active
+            },
+            success: function(data){
+                var msg = "";
+                if(data == "OK"){
+                    
+                    msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                }else{
+                    msg += "<div id='msg-success' class='alert alert-danger'>Ocurrio un error!</div>";
+                
+                }   
+              
+              
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+}
