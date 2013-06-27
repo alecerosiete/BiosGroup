@@ -80,12 +80,12 @@ $role = getRole(ROLE_PENSIONADO);
                 $html = "";
                        foreach ($a_category as $category) {
 
-                            $html .= "<tr><td>".$category['id']."</td>";
+                            $html .= "<tr id='category_id_".$category['id']."'><td>".$category['id']."</td>";
                             $html .= "<td>".$category['name']."</td>";
                             $html .= "<td>".$category['registered']."</td>";
                             $label = $category['active'] == 1 ? 'Desactivar' : 'Activar';
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$category['id']."' onclick='(btn_active_category(".$category['id']."))'/></td>";
-                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='Editar' onclick='(btn_edit_category(".$category['id']."))'/></td>";
+                            $html .= "<td style='text-align: center'><a href='./edit-category.php' class='btn'>Editar</a></td>";
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_category(".$category['id']."))'/></td></tr>";
                         }    
                     }

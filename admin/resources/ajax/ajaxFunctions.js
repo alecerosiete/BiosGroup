@@ -441,3 +441,25 @@ function btn_active_product(product_id){
           }
     });
 }
+
+
+function btn_delete_category(category_id){
+
+    $.ajax({
+            type: "POST",
+            url: "./actions/category-delete-action.php",
+            data: {
+                category_id:category_id
+            },
+            success: function(){
+               
+               $('#category_id_'+category_id).delay(1000).slideUp('fast',function(){
+                    $('#category_id_'+category_id).remove();
+               });
+               
+                //url = "/admin/banner-admin.php";
+                //window.location = url;
+             
+          }
+    });
+}
