@@ -291,6 +291,30 @@ function getCategory(){
     return $category;
 }
 
+function getActiveCategories(){
+    $db = conect();
+    $active = 1;
+    $sql = "SELECT * FROM category WHERE active = ?";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($active));
+    $category = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $category;
+}
+
+
+function getCategoryById($id){
+    $db = conect();
+    $sql = "SELECT * FROM category WHERE id = ?";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($id));
+    $category = $statement->fetch(PDO::FETCH_ASSOC);
+    //print_r($rowInfo);
+    $db = null;
+    return $category;
+}
+
 
 function getProducts(){
     $db = conect();
@@ -303,12 +327,49 @@ function getProducts(){
     return $products;
 }
 
+function getProductByCategory($category_id){
+    $db = conect();
+    $sql = "SELECT * FROM product WHERE category_id = ? AND active = 1";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($category_id));
+    $products = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
+function getProductById($product_id){
+    $db = conect();
+    $sql = "SELECT * FROM product WHERE id = ?";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($product_id));
+    $products = $statement->fetch(PDO::FETCH_ASSOC);
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
 function saveNewCategory($name,$title,$description,$image_name,$active){
     $db = conect();
     $sql = "INSERT INTO category(id,name,title,image,description,active,registered)VALUES(NULL,'$name','$title','$image_name','$description',$active,now());";
     $statement = $db->prepare($sql);
     
     if($statement->execute())
+        error_log("OK");
+    else {
+        error_log("NO");
+    }
+    $db = null;
+    error_log($sql);
+    
+}
+
+function updateCategory($name,$title,$description,$image_name,$active,$id){
+    $db = conect();
+    $sql = "UPDATE category SET name = ?,title = ?,image = ?,description = ?,active = ?,registered = NOW() WHERE id = ?";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute(array($name,$title,$image_name,$description,$active,$id)))
         error_log("OK");
     else {
         error_log("NO");
@@ -331,6 +392,20 @@ function saveNewproduct($title,$description,$image_name,$active,$product_categor
     $db = null;
     error_log($sql);
     
+}
+
+function updateProduct($title,$description,$image_name,$active,$product_category_id,$product_category_name,$id){
+    $db = conect();
+    $sql = "UPDATE product SET category_id = ?, category_name = ?,title = ?,description = ?,image = ?,image_icon = ?,active = ?,lastUpdate = NOW() WHERE id = ?";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute(array($product_category_id,$product_category_name,$title,$description,$image_name,$image_name,$active,$id)))
+        error_log("OK");
+    else {
+        error_log("NO");
+    }
+    $db = null;
+    error_log($sql);
 }
 
 function updateCategoryState($id,$state){

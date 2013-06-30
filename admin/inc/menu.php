@@ -31,6 +31,7 @@
               </li>
             </ul>
             <form class="navbar-form pull-right">
+                <a href="../index.php" style="float:left;margin-right: 20px" target="_blank" class="btn">Visualizar P&aacute;gina </a>
                 <div style="color:#fff;padding-top:10px;margin-right: 10px;float:left">Conectado como: <?= $user['data']['nombre'] ?></div>
                  <a style="float:left" href="./login.php" class="btn btn-warning">Salir</a>
            </form>

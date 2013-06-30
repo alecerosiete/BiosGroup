@@ -48,7 +48,13 @@ $role = getRole(ROLE_PENSIONADO);
     
 
     <div class="container">
-        <div id="msg" style="position: absolute ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%"></div>
+        <div class="msg-wrapper">
+              <div id="msg" style="position:fixed ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%">
+                  <?php include './tmpl/success_panel.inc' ?>
+              </div>
+              
+        </div>
+       
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
            
@@ -85,7 +91,7 @@ $role = getRole(ROLE_PENSIONADO);
                             $html .= "<td>".$category['registered']."</td>";
                             $label = $category['active'] == 1 ? 'Desactivar' : 'Activar';
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$category['id']."' onclick='(btn_active_category(".$category['id']."))'/></td>";
-                            $html .= "<td style='text-align: center'><a href='./edit-category.php' class='btn'>Editar</a></td>";
+                            $html .= "<td style='text-align: center'><a href='./edit-category.php?category_id=".$category['id']."' class='btn'>Editar</a></td>";
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_category(".$category['id']."))'/></td></tr>";
                         }    
                     }

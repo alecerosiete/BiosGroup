@@ -42,7 +42,12 @@ $role = getRole(ROLE_PENSIONADO);
     <?php include './inc/menu.php';?>
 
     <div class="container">
-
+         <div class="msg-wrapper">
+              <div id="msg" style="position:fixed ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%">
+                  <?php include './tmpl/success_panel.inc' ?>
+              </div>
+              
+        </div>
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Panel de administracion de Contenidos.</h1><br>

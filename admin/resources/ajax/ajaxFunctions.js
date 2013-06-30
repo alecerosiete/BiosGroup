@@ -13,13 +13,18 @@ $(document).ready(function(){
         var image_name = $("#image_category").val().split('\\').pop();
         var extension = image_name.split('.').pop();
         var active = $('#category-state').val(); 
-        alert(name+title+description+image_name+extension+active)
+        
         //validar que sean solo archivos imagen
         var validos = ["jpg", "png", "gif","jpeg"];
-        if($.inArray(extension, validos) == -1){
-            alert("Formato inválido de imagen, especifique otra imagen");
-            return false;
-        }else if(title.length == 0){
+        if(image_name != ""){            
+            if($.inArray(extension, validos) == -1){
+                alert("Formato inválido de imagen, especifique otra imagen");
+                return false;
+            }
+        }else{
+            image_name = 'default.jpg';
+        }
+        if(title.length == 0){
             alert("Especifique un titulo");
             return false;
         }else if(name.length == 0){
@@ -50,6 +55,60 @@ $(document).ready(function(){
     });
     /* Fin guardar categoria */
     
+    /* Boton Actualizar nueva categoria */
+    $('#btn-update-new-category').click(function(){
+        var category_id = $("#category-id").val();
+        var name = $("#category-name").val();
+        var title = $("#category-title").val();
+        var description = $("#category-description").val();
+        var image_name = $("#image_category").val().split('\\').pop();
+        var extension = image_name.split('.').pop();
+        var active = $('#category-state').val(); 
+        //alert(name+title+description+image_name+extension+active)
+        //alert("VAcio: "+image_name)
+        //validar que sean solo archivos imagen
+        var validos = ["jpg", "png", "gif","jpeg"];
+        if(image_name != ""){            
+            if($.inArray(extension, validos) == -1){
+                alert("Formato inválido de imagen, especifique otra imagen");
+                return false;
+            }
+        }else{
+            image_name = 'default.jpg';
+        }
+        if(title.length == 0){
+            alert("Especifique un titulo");
+            return false;
+        }else if(name.length == 0){
+            alert("Especifique un nombre");
+            return false;
+        }else if(description.length == 0){
+            alert("Especifique una descripcion");
+            return false;
+        }else{
+                    
+            $.ajax({
+               type: "POST",
+               url: "./actions/update-category-action.php",
+               data: {
+                   category_id:category_id,
+                   title:title,
+                   name:name,
+                   description:description,
+                   active:active,
+                   image_name:image_name
+
+               }
+            })
+           
+           
+        }
+        
+       
+    });
+    /* Fin Actualizar categoria */
+    
+    
     /* Boton guardar nuevo producto */
     $('#btn-save-new-product').click(function(){
        
@@ -61,13 +120,18 @@ $(document).ready(function(){
         var image_name = $("#product_img").val().split('\\').pop();
         var extension = image_name.split('.').pop();
         var active = $('#product-state').val(); 
-        alert(title+description+image_name+extension+active+product_category_id)
+        //alert(title+description+image_name+extension+active+product_category_id)
         //validar que sean solo archivos imagen
         var validos = ["jpg", "png", "gif","jpeg"];
-        if($.inArray(extension, validos) == -1){
-            alert("Formato inválido de imagen, especifique otra imagen");
-            return false;
-        }else if(title.length == 0){
+        if(image_name != ""){            
+            if($.inArray(extension, validos) == -1){
+                alert("Formato inválido de imagen, especifique otra imagen");
+                return false;
+            }
+        }else{
+            image_name = 'default.jpg';
+        }
+        if(title.length == 0){
             alert("Especifique un titulo");
             return false;
         }else if(description.length == 0){
@@ -95,6 +159,61 @@ $(document).ready(function(){
        
     });
     /* Fin guardar producto*/
+    
+    /* Boton actualizar producto */
+    $('#btn-update-new-product').click(function(){
+        var product_id = $("#product-id").val();
+        var title = $("#product-title").val();
+        var description = $("#product-description").val();
+        var product_category_id = $('#product-category-id :selected').val();
+        var product_category_name = $('#product-category-id :selected').text();
+        
+        var image_name = $("#product_img").val().split('\\').pop();
+        var extension = image_name.split('.').pop();
+        var active = $('#product-state').val(); 
+        //alert(title+description+image_name+extension+active+product_category_id)
+        //validar que sean solo archivos imagen
+        var validos = ["jpg", "png", "gif","jpeg"];
+        if(image_name != ""){            
+            if($.inArray(extension, validos) == -1){
+                alert("Formato inválido de imagen, especifique otra imagen");
+                return false;
+            }
+        }else{
+            image_name = 'default.jpg';
+        } 
+        if(title.length == 0){
+            alert("Especifique un titulo");
+            return false;
+        }else if(description.length == 0){
+            alert("Especifique una descripcion");
+            return false;
+        }else{
+                    
+            $.ajax({
+               type: "POST",
+               url: "./actions/update-product-action.php",
+               data: {
+                   product_id:product_id,
+                   title:title,
+                   product_category_id:product_category_id,
+                   product_category_name:product_category_name,
+                   description:description,
+                   active:active,
+                   image_name:image_name
+
+               }
+            })
+           
+           
+        }
+        
+       
+    });
+    /* Fin actualizar producto*/
+    
+    
+    
     
     
     /* Guardar novedades */
@@ -127,47 +246,7 @@ $(document).ready(function(){
     /* Fin gaurdar novedades */
   
     
-    /* Guardar pin */
-    $('#btn-save-pin').click(function(){
-       
-        var ci = $("#ci-update").val();
-        var pin = $("#show-pin").text();
-
-        $.ajax({
-           type: "POST",
-           url: "./actions/save-pin-process.php",
-           data: {
-               ci:ci,
-               pin:pin
-           }
-           }).done(function() {
-               alert("Guardado")
-
-           });
-             
-    })
-    /* Fin gaurdar pin */
-    
-    
-    
-    
-    
-    /* Generacion de pin */
-    $('#btn-generate-pin').click(function(){
-       
-        var $loading = $('#show-pin').html("<div class='progress progress-striped active'><div class='bar' style='width: 100%;'>Cargando.. </div></div>");
-             var longitud = 4;
-             $.ajax({
-                type: "POST",
-                url: "./actions/generate-pin-process.php",
-                data: {longitud:longitud}
-                }).done(function( data ) {
-                    //alert("Pin generado");
-                    $loading.html(data);
-                });
-             
-    })
-    /* Fin generacion de pin */
+      
     
     /* Boton activa usuario */
     $("#activate-user-acount").click(function(){
@@ -274,39 +353,15 @@ $(document).ready(function(){
     
     
     
-    /* Listar Datos Reservacion */
-    $('#btn-get-reservas').click(function(){
-        //alert("procesado...")
-        //var rows = $("#tipoLocal").val();
-        var start = $("#startDateConsulta").val()
-       
-        var end = $("#endDateConsulta").val();
-       
-        var tipo = $("#tipoLocal").val();
-       
-        var rows = $("#cantidadRegistros").val();
-
-        var $loading = $('#lista-reservas').html("<div class='progress progress-striped active'><div class='bar' style='width: 100%;'>Ejecutandose </div></div>");
-        
-         $.ajax({
-            type: "POST",
-            url: "/admin/actions/listaReservas.php",
-            data: {
-                start:start,
-                end:end,
-                tipo:tipo,
-                rows:rows
-            }
-            }).done(function( data ) {
-                $loading.html(data);
-
-         });
-        
-    })
-    /* Fin datos reservacion */
     
-    $(".alert-msg-show").delay(4000).hide("fade",3000)
-    $("#error-panel").delay(4000).hide("fade",3000)
+    /**** Mensajes ****/
+    $("#msg").delay(3000).hide("fade",2000)
+   //$("#error-panel").delay(4000).hide("fade",3000)
+    
+   
+    
+    /******************/
+    
     $("#btn-edit-user-data").click(function(){
             var ci = $("#ci-info").val();
             
@@ -339,22 +394,6 @@ $(document).ready(function(){
         
 });
 
-function btn_borrar_banner(id){
-    alert("Borrar banner : "+id);
-    $.ajax({
-            type: "POST",
-            url: "./actions/borrar-banner.php",
-            data: {
-                id:id
-            },
-            success: function(){
-                alert("Borrado exitoso");
-                $('#'+id).remove();
-                url = "/admin/banner-admin.php";
-                window.location = url;
-          }
-    });
-}
 
  /* Boton activar Categoria */
 function btn_active_category(category_id){
@@ -452,13 +491,41 @@ function btn_delete_category(category_id){
                 category_id:category_id
             },
             success: function(){
-               
-               $('#category_id_'+category_id).delay(1000).slideUp('fast',function(){
-                    $('#category_id_'+category_id).remove();
-               });
-               
-                //url = "/admin/banner-admin.php";
-                //window.location = url;
+               //$('#category_id_'+category_id).slideUp('slow');
+               $('#category_id_'+category_id).hide(500, function () {
+                        $('#category_id_'+category_id).remove();
+                });
+                
+                var msg = "<div id='msg-success' class='alert alert-success'>Eliminado exito!</div>";
+                $('#msg').html(msg).hide().slideDown('fast');
+                $('#msg').delay(1000).slideUp('fast',function(){
+                    //$('#msg-success').remove()
+                });
+             
+          }
+    });
+}
+
+
+function btn_delete_product(product_id){
+
+    $.ajax({
+            type: "POST",
+            url: "./actions/product-delete-action.php",
+            data: {
+                product_id:product_id
+            },
+            success: function(){
+               //$('#category_id_'+category_id).slideUp('slow');
+               $('#product_id_'+product_id).hide(500, function () {
+                        $('#product_id_'+product_id).remove();
+                });
+                
+                var msg = "<div id='msg-success' class='alert alert-success'>Eliminado exito!</div>";
+                $('#msg').html(msg).hide().slideDown('fast');
+                $('#msg').delay(1000).slideUp('fast',function(){
+                    //$('#msg-success').remove()
+                });
              
           }
     });

@@ -30,7 +30,12 @@
     margin-right: 10px;
     text-align: right;
 }
-
+.msg-wrapper{
+    left: 450px;
+    position: absolute;
+    margin-left: 35px;
+    width: 280px;
+}
 .alert-msg-show {
     float: right;
     display: inline-block;

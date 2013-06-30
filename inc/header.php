@@ -1,6 +1,5 @@
 <?php
 
-define('RUTA_RAIZ', '.');
 
 ?>
 <meta charset="utf-8">

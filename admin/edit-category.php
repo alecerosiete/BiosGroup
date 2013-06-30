@@ -10,14 +10,14 @@ $tipo_usuario = $user['data']['tipo_de_usuario'];
 
 $userInfo = getUserInfo();
 
-$role = getRole(ROLE_PENSIONADO);
-
+$category_id = $_GET['category_id'];
+$category = getCategoryById($category_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Panel de administracion</title>
+    <title>Editar Usuario - Panel de Administracion BiosGroup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -44,30 +44,29 @@ $role = getRole(ROLE_PENSIONADO);
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Agregar nueva categoria.</h1>
-        
-        <form name="save-form-new-categoria" action="./actions/new-img-category-action.php" method="POST" enctype="multipart/form-data">
-        <div align="right">
-            <button class="btn btn-large" type="submit" id="btn-save-new-category" >Guardar</button>
+        <h1>Editar categoria.</h1><hr>
+        <form name="update-form-new-categoria" action="./actions/new-img-category-action.php" method="POST" enctype="multipart/form-data">
+          <div align="right">
+            <button class="btn btn-large" type="submit" id="btn-update-new-category" >Guardar</button>
             <a href="./category.php" class="btn btn-large">Cancelar</a>
-        </div>
-        <hr>
-               <!-- Example row of columns -->
+          </div>
+            <!-- Example row of columns -->
                 <div class="row">
                   <div class="span4">
+                    <input type="hidden" name="category-id" id="category-id" value="<?=$category['id']?>" >  
                     <h3>Nombre</h3>
-                    <input type="text" name="category-name" style="width:280px" id="category-name" required placeholder="Nombre de categoria">
+                    <input type="text" name="category-name" style="width:280px" id="category-name" value="<?=$category['name']?>" required placeholder="Nombre de categoria">
                     <h3>Titulo</h3>
-                    <input type="text" name="category-title" style="width:280px" id="category-title" required placeholder="Titulo de categoria">
+                    <input type="text" name="category-title" style="width:280px" id="category-title" value="<?=$category['title']?>" required placeholder="Titulo de categoria">
 
                     <h3>Descripcion</h3>
-                    <textarea name="category-description" style="width:280px" rows="5"id="category-description" required placeholder="Descripcion de categoria"></textarea>
+                    <textarea name="category-description" style="width:280px" rows="5"id="category-description" required placeholder="Descripcion de categoria"><?=$category['description']?></textarea>
 
                   </div>
                   <div class="span4">
                     <h3>Imagen</h3>
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="box-img">
-                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="./resources/images/banner/default.jpg" /></div>
+                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="./resources/images/banner/default.jpg"/></div>
                       <div>
                         <span class="btn btn-file">
                             <span class="fileupload-new"  >Seleccione una imagen</span>
@@ -83,8 +82,10 @@ $role = getRole(ROLE_PENSIONADO);
                  <div class="span3">
                      <h3>Estado</h3>
                      <select name="category-state" id="category-state">
-                         <option value="1">Activo</option>
-                         <option value="0">Inactivo</option>
+                         <?php $selected_1 = $selected_2 = "" ?>
+                         <?= $category['active'] == 1 ? $selected_1 = "selected" : $selected_2="selected" ?>
+                         <option value='1' <?= $selected_1?> >Activo</option>
+                         <option value='0' <?= $selected_2?> >Inactivo</option>
                      </select>
                      <p>Puede activarlo mas tarde</p>
                      <hr>

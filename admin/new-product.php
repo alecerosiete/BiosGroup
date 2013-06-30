@@ -44,9 +44,14 @@ $role = getRole(ROLE_PENSIONADO);
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Agregar nuevo producto.</h1><hr>
+        <h1>Agregar nuevo producto.</h1>
        <form name="save-form-new-product" action="./actions/new-img-product-action.php" method="POST" enctype="multipart/form-data">
-               <!-- Example row of columns -->
+           <div align="right">    
+                <button class="btn btn-large" type="submit" id="btn-save-new-product" >Guardar</button>
+                <a href="./product.php" class="btn btn-large">Cancelar</a>
+            </div>
+           <hr>
+           <!-- Example row of columns -->
                 <div class="row">
                   <div class="span4">
                     <h3>Titulo</h3>
@@ -74,7 +79,7 @@ $role = getRole(ROLE_PENSIONADO);
                   <div class="span4">
                     <h3>Imagen</h3>
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="box-img">
-                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="./resources/images/banner/default.jpg" /></div>
                       <div>
                         <span class="btn btn-file">
                             <span class="fileupload-new"  >Seleccione un banner</span>
@@ -95,7 +100,7 @@ $role = getRole(ROLE_PENSIONADO);
                      </select>
                      <p>Puede activarlo mas tarde</p>
                      <hr>
-                     <button class="btn btn-large" type="submit" id="btn-save-new-product" >Guardar</button>
+                     
                  </div>
                 </div>
             </form>

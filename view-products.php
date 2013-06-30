@@ -3,12 +3,12 @@ require './inc/config.php';
 require './admin/inc/conexion-functions.php';
 require './admin/inc/sql-functions.php';
 
-$db = conect();
-$categories = getActiveCategories();
-include './inc/header.php'; 
+$category_id = $_GET['categoria'];
+$products = getProductByCategory($category_id);
 
-
+include './inc/header.php';
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -52,8 +52,27 @@ include './inc/header.php';
 			</object>
           
          </div>
-          
-           <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">PRODUCTOS</h2>
+          <style>
+              
+              .producto_model_more{
+                  width: 262px;
+                  height: 57px;
+                background: #3C5774;
+                color:#3C5774;
+                text-align: center;
+                padding-top:20px;
+                margin-left: 1px;
+                font-weight: bold;
+              }
+              .producto_model{
+                  text-align: center;
+                  color:#fff;
+                  font-weight: bold;
+                  font-size: 16px;
+                  padding-top:5px;
+              }
+          </style>
+           <h3 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">INSTRUMENTOS DE MEDICION PARA REDES DE TRANSPORTE, ACCESO E IP</h3>
           <div class="container">
             <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
                
@@ -62,75 +81,57 @@ include './inc/header.php';
           </div>
          <div class="container">
                <div class="span11" >
-                   <!-- /productos -->
                    <?php 
                    
-                    
-                        foreach ($categories as $category) { 
+                     foreach ($products as $product) { 
                          
                    ?>
+                   <!-- Inicio productos -->
                     <div class="producto" >
-                        <div class="producto_img" style="background: url(./img/categories/<?=$category['image']?>)">
-                            
-                            
-                             <div class="producto_more" style="float:left">
-                                 <a class="btn btn-mini" href="view-products.php?categoria=<?=$category['id']?>">+ Ver mas</a>
-                             </div>
-                            <div style="clear:both"></div>
-                        </div>
-                       
-                        <div class="producto_desc">
-                            <div style="margin-left:10px; padding-top:10px">
-                            <?= $category['title'] ?>
-                            </div>
-                        </div>
+                       <div class="producto_img" style="background:url(./img/products/<?=$product['image']?>) no-repeat;">
+                          <div class="producto_model">
+                               <?=$product['title']?>
+                          </div>
+                       </div>
+                       <div class="producto_model_more">
+                            <a class="btn" href="product-detail.php?product-id=<?=$product['id']?>">+ Ver mas</a>
+                       </div>
                     </div>
-                   <?php 
-                        }
-                    
+                   <?php
+                     }
                    ?>
-                   <!-- fin productos -->
+                   <!-- Fin Productos-->
                    <!--
                    <div class="producto" >
-                        <div class="producto_img prod_2">
-                            
-                            
-                             <div class="producto_more" style="float:left">
-                                 <a class="btn btn-mini" href="prod_1.php">+ Ver mas</a>
-                             </div>
-                            <div style="clear:both"></div>
-                        </div>
-                       
-                        <div class="producto_desc">
-                            <div style="margin-left:10px; padding-top:10px">
-                            INSTRUMENTOS DE<br>
-                            MEDICION PARA REDES<br>
-                            DE TRANSPORTE Y ETHERNET
-                            </div>
-                        </div>
+                       <div class="producto_img model_1">
+                          <div class="producto_model">
+                               FTB 200
+                          </div>
+                       </div>
+                       <div class="producto_model_more">
+                            <a class="btn" href="detail_product_2.php">+ Ver mas</a>
+                       </div>
                     </div>
-                   <div class="producto" >
-                        <div class="producto_img prod_3">
-                            
-                            
-                             <div class="producto_more" style="float:left">
-                                <a class="btn btn-mini" href="prod_1.php">+ Ver mas</a>
-                             </div>
-                            <div style="clear:both"></div>
-                        </div>
-                       
-                        <div class="producto_desc">
-                             <div style="margin-left:10px; padding-top:10px">
-                            SISTEMAS DE<br>
-                            GERENCIAMIENTO DE REDES<br>
-                            CALIDAD Y DESEMPEÑO
-                            </div>
-                        </div>
-                    </div>
-                      -->              
-                       
+                    <div class="producto" >
+                       <div class="producto_img model_1">
+                          <div class="producto_model">
+                               FTB 1
+                          </div>
+                       </div>
+                       <div class="producto_model_more">
+                            <a class="btn" href="detail_product_3.php">+ Ver mas</a>
+                       </div>
+                     </div>
+                    -->      
+                    
+                   
+                     
+                    
                </div>
-               
+               <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
+                    <a style="margin-top:10px;display:inline-block " href="./productos.php" class="btn">Atras</a>   
+                        <div class="clearfix"></div>
+                    </div>
            </div>
          <div class="footer">
              

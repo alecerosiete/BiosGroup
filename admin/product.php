@@ -49,7 +49,13 @@ $role = getRole(ROLE_PENSIONADO);
     
 
     <div class="container">
-<div id="msg" style="position: absolute ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%"></div>
+        <div class="msg-wrapper">
+              <div id="msg" style="position:fixed ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%">
+                  <?php include './tmpl/success_panel.inc' ?>
+              </div>
+        </div>
+        
+
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Administracion de Productos.</h1>
@@ -79,13 +85,13 @@ $role = getRole(ROLE_PENSIONADO);
                 $html = "";
                        foreach ($a_products as $product) {
 
-                            $html .= "<tr><td>".$product['id']."</td>";
+                            $html .= "<tr id='product_id_".$product['id']."'><td>".$product['id']."</td>";
                             $html .= "<td>".$product['title']."</td>";
                             $html .= "<td>".$product['category_name']."</td>";
                             $html .= "<td>".$product['registered']."</td>";
                             $label = $product['active'] == 1 ? 'Desactivar' : 'Activar';
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$product['id']."' onclick='(btn_active_product(".$product['id']."))'/></td>";
-                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='Editar' onclick='(btn_edit_product(".$product['id']."))'/></td>";
+                            $html .= "<td style='text-align: center'><a href='./edit-product.php?product_id=".$product['id']."' class='btn'>Editar</a></td>";
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_product(".$product['id']."))'/></td></tr>";
                         }    
                     }
