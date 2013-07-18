@@ -14,7 +14,7 @@
           <a class="brand" href="./index.php">BiosGroup</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="./index.php">Home</a></li>
+              <li><a href="./index.php">Home</a></li>
               <li><a href="./category.php">Categorias</a></li>
               <li><a href="./product.php">Productos</a></li>
               <li class="dropdown">

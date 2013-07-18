@@ -36,9 +36,9 @@ include './inc/header.php';
           
         <div class="header">
             <div class="btn-categorias";>
-                    <span style="border-right:1px solid #fff;padding-right: 5px;;font-weight:bold">
-                        <a href="#">Equipos Médicos</a></span>
-                    <span style="font-weight:bold"> <a href="#">Telecomunicaciones</a></span>
+                <div class="btn-categorias">
+                    <a href="./index.php"><div style="height:104px;width:400px"></div> </a>
+                </div>
             </div>
         </div>
           <?php include './inc/menu.php';?>
@@ -61,7 +61,7 @@ include './inc/header.php';
             </div>
           </div>
          <div class="container">
-               <div class="span11" >
+               <div class="span11" style="margin-left: 30px;">
                    <!-- /productos -->
                    <?php 
                    
@@ -70,7 +70,7 @@ include './inc/header.php';
                          
                    ?>
                     <div class="producto" >
-                        <div class="producto_img" style="background: url(./img/categories/<?=$category['image']?>)">
+                        <div class="producto_img" style="background: #475875  url(./img/categories/<?=$category['image']?>)">
                             
                             
                              <div class="producto_more" style="float:left">
@@ -90,50 +90,12 @@ include './inc/header.php';
                     
                    ?>
                    <!-- fin productos -->
-                   <!--
-                   <div class="producto" >
-                        <div class="producto_img prod_2">
-                            
-                            
-                             <div class="producto_more" style="float:left">
-                                 <a class="btn btn-mini" href="prod_1.php">+ Ver mas</a>
-                             </div>
-                            <div style="clear:both"></div>
-                        </div>
-                       
-                        <div class="producto_desc">
-                            <div style="margin-left:10px; padding-top:10px">
-                            INSTRUMENTOS DE<br>
-                            MEDICION PARA REDES<br>
-                            DE TRANSPORTE Y ETHERNET
-                            </div>
-                        </div>
-                    </div>
-                   <div class="producto" >
-                        <div class="producto_img prod_3">
-                            
-                            
-                             <div class="producto_more" style="float:left">
-                                <a class="btn btn-mini" href="prod_1.php">+ Ver mas</a>
-                             </div>
-                            <div style="clear:both"></div>
-                        </div>
-                       
-                        <div class="producto_desc">
-                             <div style="margin-left:10px; padding-top:10px">
-                            SISTEMAS DE<br>
-                            GERENCIAMIENTO DE REDES<br>
-                            CALIDAD Y DESEMPEÑO
-                            </div>
-                        </div>
-                    </div>
-                      -->              
                        
                </div>
                
            </div>
          <div class="footer">
-             
+             <?php include_once './inc/footer.php';?>
          </div>
       </div>
     <script src="./js/jquery.js"></script>

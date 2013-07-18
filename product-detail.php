@@ -36,11 +36,11 @@ include './inc/header.php';
       <div class="container"> 
           
         <div class="header">
-            <div class="btn-categorias";>
-                    <span style="border-right:1px solid #fff;padding-right: 5px;;font-weight:bold">
-                        <a href="#">Equipos Médicos</a></span>
-                    <span style="font-weight:bold"> <a href="#">Telecomunicaciones</a></span>
-            </div>
+           
+                <div class="btn-categorias">
+                    <a href="./index.php"><div style="height:104px;width:400px"></div> </a>
+                </div>
+           
         </div>
           <?php include './inc/menu.php';?>
           
@@ -75,6 +75,9 @@ include './inc/header.php';
                 .producto_detalle_img{
                     float:left;
                     width: 326px;
+                    background:  #3C5777;
+                    height: 100%;
+                    
                 }
                 .producto_detalle_desc{
                     float:left;
@@ -95,7 +98,7 @@ include './inc/header.php';
                    <!-- inicio producto -->
                     <div class="producto_detalle" >
                         <div class="producto_detalle_img">
-                            <img width="326px" src="./img/products/<?=$product['image']?>">
+                            <img width="326px"  src="./img/products/<?=$product['image']?>">
                         </div>
                         <div class="producto_detalle_desc">
                             <h3><?=$product['title']?></h3>
@@ -113,7 +116,7 @@ include './inc/header.php';
                
            </div>
          <div class="footer">
-             
+              <?php include_once './inc/footer.php';?>
          </div>
       </div>
     <script src="./js/jquery.js"></script>

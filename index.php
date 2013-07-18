@@ -29,9 +29,9 @@
           
         <div class="header">
             <div class="btn-categorias">
-                    <span style="border-right:1px solid #fff;padding-right: 5px;;font-weight:bold">
-                        <a href="#">Equipos Médicos</a></span>
-                    <span style="font-weight:bold"> <a href="#">Telecomunicaciones</a></span>
+                  <div class="btn-categorias">
+                    <a href="./index.php"><div style="height:104px;width:400px"></div> </a>
+                </div>
             </div>
         </div>
           
@@ -52,7 +52,7 @@
              <div class="content-left-box" style="font-family:'SansSerfRegular';text-justify:justify ;font-size:16px;line-height: 20px; padding-top:40px">
            
                  La empresa fue establecida para la comercializacion de equipamientos  Informaticos, Electronicos y de Telecomunicaciones, dirigida al sector Publico y Privado.<br><br>
-Representa y Distribuye marcas de renombre internacional tales como Exfo, Sumitomo, Radcal, Eset entre otros.<br><br>
+Representa y Distribuye marcas de renombre internacional tales como Exfo, Sumitomo, Eset entre otros.<br><br>
 El Departamento Tecnico cuenta con Personal Certificado por Fabrica, para la prestacion de Servicios de Diagnostico, Soporte y Reparaciones.
                  
              </div>
@@ -122,7 +122,7 @@ El Departamento Tecnico cuenta con Personal Certificado por Fabrica, para la pre
              <div class="clearfix"></div>
          </div>
          <div class="footer">
-             
+              <?php include_once './inc/footer.php';?>
          </div>
       </div>
     <script src="./js/jquery.js"></script>

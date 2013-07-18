@@ -5,7 +5,8 @@ require './admin/inc/sql-functions.php';
 
 $category_id = $_GET['categoria'];
 $products = getProductByCategory($category_id);
-
+$category = getCategoryById($category_id);
+$category_name = $category['title'];
 include './inc/header.php';
 ?>
 
@@ -36,9 +37,9 @@ include './inc/header.php';
           
         <div class="header">
             <div class="btn-categorias";>
-                    <span style="border-right:1px solid #fff;padding-right: 5px;;font-weight:bold">
-                        <a href="#">Equipos Médicos</a></span>
-                    <span style="font-weight:bold"> <a href="#">Telecomunicaciones</a></span>
+                    <div class="btn-categorias">
+                    <a href="./index.php"><div style="height:104px;width:400px"></div> </a>
+                </div>
             </div>
         </div>
           <?php include './inc/menu.php';?>
@@ -61,7 +62,7 @@ include './inc/header.php';
                 color:#3C5774;
                 text-align: center;
                 padding-top:20px;
-                margin-left: 1px;
+               
                 font-weight: bold;
               }
               .producto_model{
@@ -72,7 +73,7 @@ include './inc/header.php';
                   padding-top:5px;
               }
           </style>
-           <h3 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">INSTRUMENTOS DE MEDICION PARA REDES DE TRANSPORTE, ACCESO E IP</h3>
+           <h3 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5"><?=$category_name?></h3>
           <div class="container">
             <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
                
@@ -80,7 +81,7 @@ include './inc/header.php';
             </div>
           </div>
          <div class="container">
-               <div class="span11" >
+               <div class="span11" style="margin-left: 30px;">
                    <?php 
                    
                      foreach ($products as $product) { 
@@ -88,7 +89,7 @@ include './inc/header.php';
                    ?>
                    <!-- Inicio productos -->
                     <div class="producto" >
-                       <div class="producto_img" style="background:url(./img/products/<?=$product['image']?>) no-repeat;">
+                       <div class="producto_img" style="background: #3C5777 url(./img/products/<?=$product['image']?>) no-repeat;">
                           <div class="producto_model">
                                <?=$product['title']?>
                           </div>
@@ -134,7 +135,7 @@ include './inc/header.php';
                     </div>
            </div>
          <div class="footer">
-             
+              <?php include_once './inc/footer.php';?>
          </div>
       </div>
     <script src="./js/jquery.js"></script>

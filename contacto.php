@@ -22,9 +22,9 @@
           
         <div class="header">
             <div class="btn-categorias";>
-                    <span style="border-right:1px solid #fff;padding-right: 5px;;font-weight:bold">
-                        <a href="#">Equipos Médicos</a></span>
-                    <span style="font-weight:bold"> <a href="#">Telecomunicaciones</a></span>
+                    <div class="btn-categorias">
+                    <a href="./index.php"><div style="height:104px;width:400px"></div> </a>
+                </div>
             </div>
         </div>
           <?php include './inc/menu.php';?>
@@ -42,7 +42,7 @@
           <div class="container">
             <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
                 <p>Si desea hacernos alguna consulta, sugerencia o pedido, le invitamos a completar el siguiente formulario, su consulta nos interesa, muchas gracias.</p>
-                
+                <!-- ventas@biosgroup.com.py -->
                 <div class="formulario_contactos">
                    <form class="form-horizontal">
                     <div class="control-group">
@@ -79,7 +79,7 @@
           </div>
          
          <div class="footer">
-             
+              <?php include_once './inc/footer.php';?>
          </div>
       </div>
     <script src="./js/jquery.js"></script>

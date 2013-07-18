@@ -18,10 +18,11 @@
     
 }
  .producto{
-    width: 263px;
+    width: 262px;
     height: 365px;
     border:8px solid #dfdfdf;
     margin: 6px;
+    
     float:left;
 }
 .producto_img{
@@ -60,13 +61,9 @@
  }
  
  .btn-categorias{
-    text-align: right;
-    vertical-align: baseline;
-    color:#fff;
-    font-family: SansSerfRegular;
-    font-size:14px;
-    padding: 70px 30px 0px 0px;
-    font-weight: bold;
+    text-align: left;
+    width: 350px;
+  
  }
 
  .banner{
@@ -189,12 +186,27 @@
      width: 940px;
      height: 81px;
      margin-top: 20px;
-     display:block;
-     background:url('../img/footer.png') no-repeat;
-     -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-     border-radius: 10px;
-     border: 1px solid #5DA9F0;
+     margin-bottom: 20px;
+
+
+   
+ }
+ .icon_social {
+     width: 100px;
+     height: 80px;
+     background: #5885Bb;
+     float:left;
+     background: #5885Bb url('../img/icono_facebook.png') no-repeat;
+     background-size: 80px;
+ }
+ .text_footer{
+     color:#fff;
+     padding-left: 10px;
+     width: 830px;
+     height: 80px;
+     background: #5885Bb;
+     float:left;
+     display: inline
  }
  
 article,
