@@ -10,13 +10,15 @@ $file = $uploaddir.string2url(basename($_FILES['image_category']['name']));
 
 if($file != ""){
     if (move_uploaded_file($_FILES['image_category']['tmp_name'], $file)) { 
+        
+        $category_id = $_POST['category-id'];
         $name = $_POST['category-name'];
         $title = $_POST['category-title'];
         $description = $_POST['category-description'];
         $image_name = string2url(basename($_FILES['image_category']['name'])); 
         $active = $_POST['category-state'];
 
-        saveNewCategory($name,$title,$description,$image_name,$active);
+        updateCategory($name,$title,$description,$image_name,$active,$category_id);
 
 
         setSuccess("Guardado con exito");

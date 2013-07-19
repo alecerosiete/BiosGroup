@@ -46,7 +46,7 @@ $product = getProductById($product_id);
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Editar producto.</h1><hr>
-       <form name="update-form-new-product" action="./actions/new-img-product-action.php" method="POST" enctype="multipart/form-data">
+       <form name="update-form-new-product" action="./actions/update-img-product-action.php" method="POST" enctype="multipart/form-data">
            <div align="right">    
                 <button class="btn btn-large" type="submit" id="btn-update-new-product" >Guardar</button>
                 <a href="./product.php" class="btn btn-large">Cancelar</a>

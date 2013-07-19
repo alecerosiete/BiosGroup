@@ -33,22 +33,6 @@ $(document).ready(function(){
         }else if(description.length == 0){
             alert("Especifique una descripcion");
             return false;
-        }else{
-                    
-            $.ajax({
-               type: "POST",
-               url: "./actions/new-category-action.php",
-               data: {
-                   title:title,
-                   name:name,
-                   description:description,
-                   active:active,
-                   image_name:image_name
-
-               }
-            })
-           
-           
         }
         
        
@@ -85,25 +69,7 @@ $(document).ready(function(){
         }else if(description.length == 0){
             alert("Especifique una descripcion");
             return false;
-        }else{
-                    
-            $.ajax({
-               type: "POST",
-               url: "./actions/update-category-action.php",
-               data: {
-                   category_id:category_id,
-                   title:title,
-                   name:name,
-                   description:description,
-                   active:active,
-                   image_name:image_name
-
-               }
-            })
-           
-           
-        }
-        
+        }        
        
     });
     /* Fin Actualizar categoria */
@@ -137,26 +103,9 @@ $(document).ready(function(){
         }else if(description.length == 0){
             alert("Especifique una descripcion");
             return false;
-        }else{
-                    
-            $.ajax({
-               type: "POST",
-               url: "./actions/new-product-action.php",
-               data: {
-                   title:title,
-                   product_category_id:product_category_id,
-                   product_category_name:product_category_name,
-                   description:description,
-                   active:active,
-                   image_name:image_name
-
-               }
-            })
-           
-           
         }
         
-       
+               
     });
     /* Fin guardar producto*/
     
@@ -188,33 +137,13 @@ $(document).ready(function(){
         }else if(description.length == 0){
             alert("Especifique una descripcion");
             return false;
-        }else{
-                    
-            $.ajax({
-               type: "POST",
-               url: "./actions/update-product-action.php",
-               data: {
-                   product_id:product_id,
-                   title:title,
-                   product_category_id:product_category_id,
-                   product_category_name:product_category_name,
-                   description:description,
-                   active:active,
-                   image_name:image_name
-
-               }
-            })
-           
-           
         }
         
-       
+               
     });
     /* Fin actualizar producto*/
     
-    
-    
-    
+           
     
     /* Guardar novedades */
     $('#btn-guardar-novedades').click(function(){

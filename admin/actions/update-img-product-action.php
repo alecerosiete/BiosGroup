@@ -10,6 +10,7 @@ $file = $uploaddir.string2url(basename($_FILES['product_img']['name']));
 
 if($file != ""){
     if (move_uploaded_file($_FILES['product_img']['tmp_name'], $file)) { 
+        $id = $_POST['product-id'];
         $title = $_POST['product-title'];
         $product_category_id = $_POST['product-category'];
         $product_category_name = getCategoryById($product_category_id);
@@ -17,8 +18,9 @@ if($file != ""){
         $image_name =  string2url(basename($_FILES['product_img']['name'])); 
         $active = $_POST['product-state'];
         setSuccess("Guardado con exito");
-       
-        saveNewProduct($title,$description,$image_name,$active,$product_category_id,$product_category_name['name']);
+
+        updateProduct($title,$description,$image_name,$active,$product_category_id,$product_category_name['name'],$id);
+        
 
     } else {
         error_log("Error al subir la imagen");

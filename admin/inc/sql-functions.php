@@ -354,10 +354,12 @@ function saveNewCategory($name,$title,$description,$image_name,$active){
     $sql = "INSERT INTO category(id,name,title,image,description,active,registered)VALUES(NULL,'$name','$title','$image_name','$description',$active,now());";
     $statement = $db->prepare($sql);
     
-    if($statement->execute())
+    if($statement->execute()){
         error_log("OK");
-    else {
+        echo "ok";
+    }else {
         error_log("NO");
+        echo "no ok $sql";
     }
     $db = null;
     error_log($sql);

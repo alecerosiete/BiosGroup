@@ -45,7 +45,7 @@ $category = getCategoryById($category_id);
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Editar categoria.</h1><hr>
-        <form name="update-form-new-categoria" action="./actions/new-img-category-action.php" method="POST" enctype="multipart/form-data">
+        <form name="update-form-new-categoria" action="./actions/update-img-category-action.php" method="POST" enctype="multipart/form-data">
           <div align="right">
             <button class="btn btn-large" type="submit" id="btn-update-new-category" >Guardar</button>
             <a href="./category.php" class="btn btn-large">Cancelar</a>
