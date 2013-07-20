@@ -59,12 +59,7 @@ El Departamento Tecnico cuenta con Personal Certificado por Fabrica, para la pre
 					</object>
              </div>
              <div class="content-right-box">
-                 <object type="application/x-shockwave-flash" 
-					width="400" height="263" data="../img/nuevos_productos.swf">
-					<param name="movie" value="../img/nuevos_productos.swf">
-
-					</param>
-					</object>
+                 
              </div>
              <div class="clearfix"></div>
          </div>
