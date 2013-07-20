@@ -17,6 +17,7 @@
               <li><a href="./index.php">Home</a></li>
               <li><a href="./category.php">Categorias</a></li>
               <li><a href="./product.php">Productos</a></li>
+              <li><a href="./banner-administrator.php">Banner</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones <b class="caret"></b></a>
                 <ul class="dropdown-menu">

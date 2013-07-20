@@ -68,9 +68,9 @@ $role = getRole(ROLE_PENSIONADO);
           <p><a class="btn btn-primary"  href="./product.php">Ingresar &raquo;</a></p>
        </div>
         <div class="span4">
-          <h2>Otro</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+          <h2>Banners</h2>
+          <p>Administre las imagenes que se presentaran como banner en el sitio, aqui podra crear, borrar, o consultar un banner que sera visualizado en la pagina principal.</p>
+          <p><a class="btn btn-primary" href="./banner-administrator.php">Ingresar &raquo;</a></p>
         </div>
       </div>
 

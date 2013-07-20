@@ -101,31 +101,6 @@ include './inc/header.php';
                    <?php
                      }
                    ?>
-                   <!-- Fin Productos-->
-                   <!--
-                   <div class="producto" >
-                       <div class="producto_img model_1">
-                          <div class="producto_model">
-                               FTB 200
-                          </div>
-                       </div>
-                       <div class="producto_model_more">
-                            <a class="btn" href="detail_product_2.php">+ Ver mas</a>
-                       </div>
-                    </div>
-                    <div class="producto" >
-                       <div class="producto_img model_1">
-                          <div class="producto_model">
-                               FTB 1
-                          </div>
-                       </div>
-                       <div class="producto_model_more">
-                            <a class="btn" href="detail_product_3.php">+ Ver mas</a>
-                       </div>
-                     </div>
-                    -->      
-                    
-                   
                      
                     
                </div>

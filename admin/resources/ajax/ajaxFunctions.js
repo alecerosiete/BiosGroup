@@ -1,5 +1,41 @@
 $(document).ready(function(){
    
+    /* Boton guardar info de banner */
+    $('#btn-guardar-banner').click(function(){
+       
+        var titulo = $("#titulo-banner").val();
+        var texto = $("#texto-banner").val();
+        var nombre_imagen = $("#banner").val().split('\\').pop();
+        var extension = nombre_imagen.split('.').pop();
+        //validar que sean solo archivos imagen
+        var validos = ["jpg", "png", "gif","jpeg"];
+        if($.inArray(extension, validos) == -1){
+            alert("Formato inválido de imagen, especifique otra imagen");
+
+        }else if(titulo.length == 0){
+            alert("Especifique un titulo");
+        }else if(texto.length == 0){
+            alert("Especifique un texto");
+        }
+        
+        /*
+            uploadFile('banner','archivo');        
+            $.ajax({
+               type: "POST",
+               url: "./actions/save-banner-novedades.php",
+               data: {
+                   titulo:titulo,
+                   texto:texto,
+                   nombre_imagen:nombre_imagen
+
+               }
+               }).done(function() {
+
+                   alert("Guardado");
+                   window.location = "./banner-administrator.php";
+               });
+        */
+    });
     
     
     
@@ -168,7 +204,7 @@ $(document).ready(function(){
                }).done(function() {
                    
                    alert("Guardado");
-                   window.location = "./banner-admin.php";
+                   window.location = "./banner-administrator.php";
                });
         }
     });
@@ -456,6 +492,24 @@ function btn_delete_product(product_id){
                     //$('#msg-success').remove()
                 });
              
+          }
+    });
+}
+
+
+function btn_borrar_banner(id){
+
+    $.ajax({
+            type: "POST",
+            url: "./actions/borrar-banner.php",
+            data: {
+                id:id
+            },
+            success: function(){
+
+                $('#'+id).remove();
+                url = "./banner-administrator.php";
+                window.location = url;
           }
     });
 }

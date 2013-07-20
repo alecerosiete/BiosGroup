@@ -79,7 +79,7 @@ $role = getRole(ROLE_PENSIONADO);
                   <div class="span4">
                     <h3>Imagen</h3>
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="box-img">
-                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="./resources/images/banner/default.jpg" /></div>
+                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="../img/default.png" /></div>
                       <div>
                         <span class="btn btn-file">
                             <span class="fileupload-new"  >Seleccione un banner</span>

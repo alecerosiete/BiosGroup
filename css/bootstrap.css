@@ -187,24 +187,26 @@
      height: 81px;
      margin-top: 20px;
      margin-bottom: 20px;
-
+     
 
    
  }
  .icon_social {
      width: 100px;
-     height: 80px;
-     background: #5885Bb;
+     height: 84px;
      float:left;
-     background: #5885Bb url('../img/icono_facebook.png') no-repeat;
+padding-top:2px;
      background-size: 80px;
+background: url('../img/barra_abajo.png') repeat-x;;
  }
  .text_footer{
-     color:#fff;
+     color:#000000;
+     font-size: 12px;
      padding-left: 10px;
+padding-top:2px;
      width: 830px;
-     height: 80px;
-     background: #5885Bb;
+     height: 84px;
+     background: url('../img/barra_abajo.png') repeat-x;;
      float:left;
      display: inline
  }

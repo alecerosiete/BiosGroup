@@ -75,7 +75,7 @@ session_destroy();
         <script src="./resources/bootstrap/assets/js/jquery.mousewheel.js"></script>
         <script src="./resources/bootstrap/assets/js/jquery.keyboard.extension-typing.js"></script>
         <script type="text/javascript">
-	$('#pin') 
+	/*$('#pin') 
 	 .keyboard({ 
 	  layout : 'num', 
 	  lockInput    : true,
@@ -84,7 +84,7 @@ session_destroy();
 	  autoAccept : true 
 	 }) 
 	 .addTyping();
-        
+        */
         </script>
   </body>
 </html>

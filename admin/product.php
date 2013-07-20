@@ -52,6 +52,7 @@ $role = getRole(ROLE_PENSIONADO);
         <div class="msg-wrapper">
               <div id="msg" style="position:fixed ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%">
                   <?php include './tmpl/success_panel.inc' ?>
+                   <?php include './tmpl/error_panel.inc' ?>
               </div>
         </div>
         

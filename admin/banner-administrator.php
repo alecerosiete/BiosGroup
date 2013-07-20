@@ -2,28 +2,29 @@
 require './inc/session.inc';
 assertUser();
 $user = getUser();
-//print_r($user);
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
+$db = conect();
 
-$role = getRole(ROLE_PENSIONADO);
 
-//print_r($role);
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Caja Bancaria - Caja de Jubilaciones y Pensiones de Empleados de Bancos y Afines</title>
+    <title>Panel de administracion</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <?php require './inc/header.php'; ?>
-    <link rel="stylesheet" type="text/css" href="./resources/bootstrap/assets/css/bootstrap-fileupload.css" media="all" />
+       <link rel="stylesheet" type="text/css" href="./resources/bootstrap/assets/css/bootstrap-fileupload.css" media="all" />
     <style type="text/css">
-        
-      .carousel {
+          body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+          }
+          .carousel {
         margin-left: 0px;
         margin-right: 0px;
       }
@@ -49,7 +50,7 @@ $role = getRole(ROLE_PENSIONADO);
       .carousel-caption .btn {
         font-size: 14px;
       }
-      .table-edit-data th, .table-edit-data td {
+        .table-edit-data th, .table-edit-data td {
         padding: 8px;
         line-height: 20px;
         text-align: right;
@@ -80,30 +81,20 @@ $role = getRole(ROLE_PENSIONADO);
         
 </head>
   <body>
+      <?php  include './inc/menu.php';?>
     <div class="container">
-      <div class="header-caja-bancaria">
-          <div class="btn-logout">
-            Conectado como: <?=$user['data']['nombre']?> <a href="./login.php" class="btn btn-warning">Salir</a>
-          </div>
-          <div class="alert-msg-show">
-            <?php include("./tmpl/success_panel.inc")?>
-          </div>
-      </div>
-      <div class="masthead">
-        <!--Menu -->
-        <?php require './inc/menu.php'; ?>
-        <!-- end menu -->
-      </div>
-        
-        <div class="hero-unit">
-             <?php if(getPerfil(ROLE_SYSTEM)) { ?>
-            
-            <H3 style="text-align:right;color:#E35300;margin-bottom:50px">Administracion de Novedades</H3>
-            <hr style="border: 1px solid #E35300">
-        <!-- Edicion de banner -->
-        <?include("./inc/upload-file-functions.php");?>
-        <div class="span9">
-            
+        <div class="msg-wrapper">
+              <div id="msg" style="position:fixed ;text-align: center;z-index: 1000 ;right: 10%;margin-top:3%">
+                  <?php include './tmpl/success_panel.inc' ?>
+              </div>
+        </div>
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Administracion de Banners.</h1>
+            <div align="right">
+                <br>
+                <hr>
+            </div>
             <div class="tabbable" style="font-size: 16px">
          
                 <ul class="nav nav-pills">
@@ -172,7 +163,7 @@ $role = getRole(ROLE_PENSIONADO);
                                             echo "<div class='item'>";
                                          }
 
-                                         echo "<img src='./img/banner/".$banner['news_banner_name']."' alt='$banner'>";
+                                         echo "<img src='./resources/images/banner/".$banner['news_banner_name']."' alt='$banner'>";
                                          echo "<div class='container'></div>";
                                          ?>
                                          <div class="carousel-caption">
@@ -252,20 +243,20 @@ $role = getRole(ROLE_PENSIONADO);
                         <H3>Agregar contenido de banner</H3>
                         <hr style="border: 1px solid #E35300">
                         
-            
+                        <form action="./actions/save-banner-action.php" method="POST" id="form-upload-banner" enctype="multipart/form-data">
                             <div class="text-novedades-preview">
-                                <label>Titulo para el banner</label><input type="text" id="titulo-banner" style="width:300px" placeholder="Ingrese un titulo">
-                                <label>Descripcion para el banner</label><textarea id="texto-banner" style="width:300px" rows="8"></textarea>
+                                <label>Titulo para el banner</label><input type="text" id="titulo-banner" name="titulo-banner" style="width:300px" placeholder="Ingrese un titulo">
+                                <label>Descripcion para el banner</label><textarea id="texto-banner" name="texto-banner" style="width:300px" rows="8"></textarea>
                                  <div>
 
-                                    <input type="button"  class="btn"  id="btn-guardar-banner" value="Guardar">
+                                    <input type="submit" class="btn" id="btn-guardar-banner" value="Guardar">
                                     <div style="clear: both"></div>
                                 </div>
                             </div>
 
                             <div class="banner-preview">
                                 <div class="fileupload fileupload-new" data-provides="fileupload" id="box-banner">
-                                     <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 350px; height: 190px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+                                     <div id="banner-thumbnail" class="fileupload-preview thumbnail" style="width: 350px; height: 190px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
                                      <div>
                                        <span class="btn btn-file">
                                            <span class="fileupload-new"  >Seleccione un banner</span>
@@ -289,6 +280,7 @@ $role = getRole(ROLE_PENSIONADO);
                             Suba una imagen con un tamaño aproximado de <span class="label label-info">670x300 pixeles</span> para su mejor visualizacion.
                             <div style="clear: both"></div>
                         </div>
+                      </form>
                     </div>
                      
                   </div>
@@ -302,53 +294,21 @@ $role = getRole(ROLE_PENSIONADO);
                   </div-->
                 </div><!-- /.tab-content -->
               </div><!-- /.tabbable -->
-            
-            
-        </div>
-        
+         
             <!-- /Fin edicion de banner -->
-             <div style="clear: both"></div>
-        </div> <!-- /End Hero-unit-->
-      
-            
-       <?php }else{
-                echo "<div class='hero-unit'>";
-                $msj = getAccesDenied();
-                echo $msj;
-                echo "</div>";
-          }
-          ?>    
-      
+             
+        
+        
+      </div>
       <hr>
-    <footer>
-        <div class="footer">
-             Caja de Jubilaciones y Pensiones de Empleados de Bancos y Afines del Paraguay &copy; 2012 - Todos los Derechos Reservados
-     www.cajabancaria.gov.py <br> Humaita 357 e/Chile y Alberdi |(595 21) 492 051 / 052 / 053 / 054
-        </div> 
 
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
 
-    </footer>
-            <hr>
     </div> <!-- /container -->
     
-    <!-- Modal -->
-    <div style="z-index: 100000" id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Upload de archivos</h3>
-      </div>
-      <div class="modal-body">
-          <p>
-          <span>Aguarde, convirtiendo audio...</span>
-          </p>
-       <progress id="progressBar" value="0" max="100" class="progress" > </progress> 
-        <div id="percentageCalc" style="display:inline; float: right"></div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-      </div>
-
-    </div>
+    
 
     
     
@@ -361,26 +321,8 @@ $role = getRole(ROLE_PENSIONADO);
         })
       }(window.jQuery)
     </script>
-    <script type="text/javascript">
-            // Executes the function when DOM will be loaded fully
-            $(document).ready(function () {	
-                    // hover property will help us set the events for mouse enter and mouse leave
-                    $('.navigation li').hover(
-                            // When mouse enters the .navigation element
-                            function () {
-                                    //Fade in the navigation submenu
-                                    $('ul', this).fadeIn(); 	// fadeIn will show the sub cat menu
-                            }, 
-                            // When mouse leaves the .navigation element
-                            function () {
-                                    //Fade out the navigation submenu
-                                    $('ul', this).fadeOut();	 // fadeOut will hide the sub cat menu		
-                            }
-                    );
-            });
-        </script>
+    
         <script src="./resources/ajax/ajaxFunctions.js"></script>
-        <script src="./resources/bootstrap/assets/js/bootstrap-fileupload.js"></script>
+         <script src="./resources/bootstrap/assets/js/bootstrap-fileupload.js"></script>
   </body>
 </html>
-
