@@ -73,12 +73,12 @@ Equipos Médicos. <br>
 					</object>
              </div>
              <div class="content-right-box">
-                 <object type="application/x-shockwave-flash" 
+                 <! - - object type="application/x-shockwave-flash" 
 					width="400" height="263" data="../img/nuevos_productos.swf">
 					<param name="movie" value="../img/nuevos_productos.swf">
 
 					</param>
-					</object>
+					</object-->
              </div>
              <div class="clearfix"></div>
          </div>
