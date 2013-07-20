@@ -10,7 +10,7 @@ $tipo_usuario = $user['data']['tipo_de_usuario'];
 
 $userInfo = getUserInfo();
 
-$role = getRole(ROLE_PENSIONADO);
+
 
 ?>
 <!DOCTYPE html>
@@ -58,7 +58,7 @@ $role = getRole(ROLE_PENSIONADO);
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
            
-        <h1>Administracion de Categorias.</h1>
+        <h1>Administracion de Categorias de Telecomunicaciones.</h1>
         <div align="right">
             <a href="./new-category.php" class="btn btn-large">Nuevo</a>
         </div>

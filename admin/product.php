@@ -10,7 +10,6 @@ $tipo_usuario = $user['data']['tipo_de_usuario'];
 
 $userInfo = getUserInfo();
 
-$role = getRole(ROLE_PENSIONADO);
 
 ?>
 <!DOCTYPE html>
@@ -59,7 +58,7 @@ $role = getRole(ROLE_PENSIONADO);
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Administracion de Productos.</h1>
+        <h1>Administracion de Productos para Telecomunicaciones.</h1>
         <div align="right">
             <a href="./new-product.php" class="btn btn-large">Nuevo</a><hr>
         </div>
@@ -67,7 +66,7 @@ $role = getRole(ROLE_PENSIONADO);
             <thead>
                 <tr >
                     <?php 
-                    $a_products = getProducts();
+                    $a_products = getProducts('product');                   
                     if(empty($a_products)){
                            echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                     }else{
@@ -95,6 +94,7 @@ $role = getRole(ROLE_PENSIONADO);
                             $html .= "<td style='text-align: center'><a href='./edit-product.php?product_id=".$product['id']."' class='btn'>Editar</a></td>";
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_product(".$product['id']."))'/></td></tr>";
                         }    
+                       
                     }
                     echo $html;
                 ?>
@@ -103,24 +103,7 @@ $role = getRole(ROLE_PENSIONADO);
         </table>  
       </div>
 
-      <!-- Example row of columns -->
-      <!--div class="row">
-        <div class="span4">
-          <h2>Categorias</h2>
-          <p>Administre las categorias de productos, puede crear una nueva categoria para luego agrupar productos  mostrarlos en la seccion de Productos del sitio. </p>
-          <p><a class="btn btn-primary" href="#">Ingresar &raquo;</a></p>
-        </div>
-        <div class="span4">
-          <h2>Productos</h2>
-          <p>Administre sus productos, agregue, edite o elimine, puede agregar un numero infinito de productos asignando una categoria. </p>
-          <p><a class="btn btn-primary"  href="#">Ingresar &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Otro</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
-        </div>
-      </div-->
+   
 
       <hr>
 
@@ -143,24 +126,7 @@ $role = getRole(ROLE_PENSIONADO);
         })
       }(window.jQuery)
     </script>
-    <script type="text/javascript">
-            // Executes the function when DOM will be loaded fully
-            $(document).ready(function () {	
-                    // hover property will help us set the events for mouse enter and mouse leave
-                    $('.navigation li').hover(
-                            // When mouse enters the .navigation element
-                            function () {
-                                    //Fade in the navigation submenu
-                                    $('ul', this).fadeIn(); 	// fadeIn will show the sub cat menu
-                            }, 
-                            // When mouse leaves the .navigation element
-                            function () {
-                                    //Fade out the navigation submenu
-                                    $('ul', this).fadeOut();	 // fadeOut will hide the sub cat menu		
-                            }
-                    );
-            });
-        </script>
+    
         <script src="./resources/ajax/ajaxFunctions.js"></script>
   </body>
 </html>

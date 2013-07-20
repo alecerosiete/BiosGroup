@@ -1,16 +1,12 @@
 <?php
 require './inc/session.inc';
 assertUser();
-$user = getUser();
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
 $db = conect();
-$tipo_usuario = $user['data']['tipo_de_usuario'];
 
-$userInfo = getUserInfo();
 
-$role = getRole(ROLE_PENSIONADO);
 
 ?>
 <!DOCTYPE html>
@@ -88,7 +84,13 @@ $role = getRole(ROLE_PENSIONADO);
                      </select>
                      <p>Puede activarlo mas tarde</p>
                      <hr>
+                     <h3>Categoria</h3>
+                     <select name="category-table" id="category-table">
+                         <option value="category">Telecomunicacion</option>
+                         <option value="category_electromedicina">Electromedicina</option>
+                     </select>
                      
+                     <hr>
                  </div>
                 </div>
             </form>

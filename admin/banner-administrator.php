@@ -98,10 +98,10 @@ $db = conect();
             <div class="tabbable" style="font-size: 16px">
          
                 <ul class="nav nav-pills">
-                  <li  class="active"><a href="#intro" data-toggle="tab">Introduccion</a></li>  
+                  <!--li><a href="#intro" data-toggle="tab">Introduccion</a></li-->  
 
-                  <li><a href="#banners" data-toggle="tab">Banners</a></li>
-
+                  <li class="active"><a href="#banners-electromedicina" data-toggle="tab">Banners Electromedicina</a></li>
+                  <li><a href="#banners-telecomunicaciones" data-toggle="tab">Banners Telecomunicaciones</a></li>
                   <li><a href="#nuevo-banner" data-toggle="tab">Agregar Nuevo Banner</a></li>
 
                   <!--li><a href="#aportes" data-toggle="tab"></a></li-->
@@ -109,7 +109,7 @@ $db = conect();
                 </ul>
 
                 <div class="tab-content">
-                  <div id="intro" class="tab-pane  active">
+                  <div id="intro" class="tab-pane  ">
                     <div class="hero-unit-interno">
                         <H3>Agregar informacion general</H3>
                     <hr style="border: 1px solid #E35300">
@@ -163,12 +163,12 @@ $db = conect();
                                             echo "<div class='item'>";
                                          }
 
-                                         echo "<img src='./resources/images/banner/".$banner['news_banner_name']."' alt='$banner'>";
+                                         echo "<img src='./resources/images/banner/".$banner['banner_name']."' alt='".$banner['banner_title']."'>";
                                          echo "<div class='container'></div>";
                                          ?>
                                          <div class="carousel-caption">
-                                             <h1><?= $banner['news_banner_title'] ?></h1>
-                                             <p class="lead"> <?= $banner['news_banner_text'] ?></p>
+                                             <h1><?= $banner['banner_title'] ?></h1>
+                                             <p class="lead"> <?= $banner['banner_text'] ?></p>
 
                                          </div>
 
@@ -203,7 +203,7 @@ $db = conect();
                   </div>
                     
                     
-                  <div id="banners" class="tab-pane ">
+                  <div id="banners-electromedicina" class="tab-pane active" >
                     <div class="hero-unit-interno">
                         <H3>Banners</H3>
                             <hr style="border: 1px solid #E35300">
@@ -211,8 +211,10 @@ $db = conect();
                                 <thead>
                                     <tr>
                                         <?php 
-                                        $a_getAllBanners = getBannerNovedades();
-                                        if(empty($a_getAllBanners)){
+                                        $table_electromedicina = "banner_electromedicina";
+                                        $a_getAllBannersElectro = getBanner($table_electromedicina);
+                                        //$a_getAllBannersTeleco = getBanner('banner_telecomunicaciones');
+                                        if(empty($a_getAllBannersElectro )){
                                                echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                                         }else{
                                         ?>
@@ -223,20 +225,174 @@ $db = conect();
                                 </thead>
                                 <tbody>
                                     <?php
-                                           foreach ($a_getAllBanners as $banner) {
-
-                                                   echo "<tr id='".$banner['id']."'><td >".$banner['id']."</td><td>".$banner['news_banner_title']."</td><td><input type='button' class='btn' value='Borrar' onclick='(btn_borrar_banner(".$banner['id']."))'/></td></tr>";
-
-                                            }    
+                                           foreach ($a_getAllBannersElectro as $banner) {
+                                               ?>
+                                                   <tr id="<?=$banner['id']?>"><td ><?=$banner['id']?></td><td><?=$banner['banner_title']?></td><td><input type='button' class='btn' value='Borrar' onclick="(btn_borrar_banner(<?=$banner['id']?>,'banner_electromedicina'))"/></td></tr>
+                                               <?php
+                                            }
+                                            
                                         }
                                     ?>
                                 </tbody>
                                 
                             </table>   
                     </div>
+                      <div class="hero-unit-interno">
+                         <H3>Vista Previa</H3>
+                            <div clas="span10" style="width:940px;height: 300px;margin-left: auto;margin-right: auto;">
+                                <!-- Carousel
+                            ================================================== -->
+                            <div id="carrouselElectromedicina" class="carousel slide">
+                              <div class="carousel-inner">
+
+                                  <!-- Obtiene las imagenes -->
+                                  <?php
+
+                                     $a_banner = getBanner('banner_electromedicina');
+                                     //print_r($a_banner);
+                                     $active = 0;
+                                     foreach ($a_banner as $banner) {
+
+                                         if($active == 0){
+                                            echo "<div class='item active'>";
+                                            $active = -1;
+                                         }else{
+                                            echo "<div class='item'>";
+                                         }
+                                         ?>
+                                         <img src="./resources/images/banner/<?=$banner['banner_name']?>" alt="<?=$banner['banner_title']?>">
+                                         <div class='container'></div>
+                                         
+                                         <div class="carousel-caption">
+                                             <h1><?= $banner['banner_title'] ?></h1>
+                                             <p class="lead"> <?= $banner['banner_text'] ?></p>
+
+                                         </div>
+
+
+
+                                         <?php
+                                         echo "</div>";
+
+                                     }       
+
+
+                                  ?>                               
+
+                              </div>
+                                <?php
+                                if (empty($a_banner)){
+                                    echo "<div class='alert alert-danger'>No se encontro ningun banner </div>";
+                                    
+                                }else{                        
+                                ?>
+                                  <a class="left carousel-control" href="#carrouselElectromedicina" data-slide="prev">&lsaquo;</a>
+                                  <a class="right carousel-control" href="#carrouselElectromedicina" data-slide="next">&rsaquo;</a>
+                                 <?php
+                                }
+                                ?>
+                                  
+                            </div>
+                            <!-- /.carousel -->
+                            </div>
+                     </div>
                   </div>
                     
-                    
+                 <div id="banners-telecomunicaciones" class="tab-pane ">
+                    <div class="hero-unit-interno">
+                        <H3>Banners Telecomunicaciones</H3>
+                            <hr style="border: 1px solid #E35300">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <?php 
+                                        $table_telecomunicaciones = "banner_telecomunicaciones";
+                                        $a_getAllBannersTeleco = getBanner($table_telecomunicaciones);
+                                        if(empty($a_getAllBannersTeleco )){
+                                               echo "<div class='alert alert-danger'>No se encontraron registros </div>";
+                                        }else{
+                                        ?>
+                                        <th width="20%">ID</th>
+                                        <th width="80%">Nombre</th>
+                                        <th width="20%">Borrar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                           foreach ($a_getAllBannersTeleco as $banner) {
+                                               ?>
+                                                   <tr id="<?=$banner['id']?>"><td ><?=$banner['id']?></td><td><?=$banner['banner_title']?></td><td><input type='button' class='btn' value='Borrar' onclick="(btn_borrar_banner(<?=$banner['id']?>,'banner_telecomunicaciones'))"/></td></tr>
+                                               <?php
+                                           }
+                                            
+                                      ?>
+                                </tbody>
+                                <?php
+                                       }
+                                    
+                                    ?>           
+                            </table>  
+                            </div>
+                     <div class="hero-unit-interno">
+                         <H3>Vista Previa</H3>
+                            <div clas="span10" style="width:940px;height: 300px;margin-left: auto;margin-right: auto;">
+                                <!-- Carousel
+                            ================================================== -->
+                            <div id="carrouselTelecomunicaciones" class="carousel slide">
+                              <div class="carousel-inner">
+
+                                  <!-- Obtiene las imagenes -->
+                                  <?php
+                                     
+                                     $a_banner = getBanner($table_telecomunicaciones);
+                                     //print_r($a_banner);
+                                     $active = 0;
+                                     foreach ($a_banner as $banner) {
+
+                                         if($active == 0){
+                                            echo "<div class='item active'>";
+                                            $active = -1;
+                                         }else{
+                                            echo "<div class='item'>";
+                                         }
+
+                                         echo "<div align='center'><img align='center'  src='./resources/images/banner/".$banner['banner_name']."' alt='".$banner['banner_title']."'></div>";
+                                         echo "<div class='container'></div>";
+                                         ?>
+                                         <div class="carousel-caption">
+                                             <h1><?= $banner['banner_title'] ?></h1>
+                                             <p class="lead"> <?= $banner['banner_text'] ?></p>
+
+                                         </div>
+
+
+
+                                         <?php
+                                         echo "</div>";
+
+                                     }       
+
+
+                                  ?>                               
+
+                              </div>
+                                <?php
+                                if (empty($a_banner)){
+                                    echo "<div class='alert alert-danger'>No se encontro ningun banner </div>";
+                                    
+                                }else{                        
+                                ?>
+                                  <a class="left carousel-control" href="#carrouselTelecomunicaciones" data-slide="prev">&lsaquo;</a>
+                                  <a class="right carousel-control" href="#carrouselTelecomunicaciones" data-slide="next">&rsaquo;</a>
+                                 <?php
+                                }
+                                ?>
+                                  
+                            </div>
+                            <!-- /.carousel -->
+                            </div>
+                     </div>
+                  </div>  
                     
                   <div id="nuevo-banner" class="tab-pane">
                     <div class="hero-unit-interno">
@@ -245,8 +401,8 @@ $db = conect();
                         
                         <form action="./actions/save-banner-action.php" method="POST" id="form-upload-banner" enctype="multipart/form-data">
                             <div class="text-novedades-preview">
-                                <label>Titulo para el banner</label><input type="text" id="titulo-banner" name="titulo-banner" style="width:300px" placeholder="Ingrese un titulo">
-                                <label>Descripcion para el banner</label><textarea id="texto-banner" name="texto-banner" style="width:300px" rows="8"></textarea>
+                                <label> <h3>Titulo</h3></label><input type="text" id="titulo-banner" name="titulo-banner" style="width:300px" placeholder="Ingrese un titulo">
+                                <label> <h3>Descripcion</h3></label><textarea id="texto-banner" name="texto-banner" style="width:300px" rows="8"></textarea>
                                  <div>
 
                                     <input type="submit" class="btn" id="btn-guardar-banner" value="Guardar">
@@ -267,17 +423,24 @@ $db = conect();
                                        <a href="#" id="btn-banner-preview-remove" class="btn fileupload-exists" data-dismiss="fileupload">Remover</a>
                                        <span class="label label-info"> Formatos: .jpg .png .gif .jpeg</span>
                                      </div>
+                                     <br>
                                      
-       
                                    </div>
-                                    
-                                     
+                                  
                                     
                             </div>
-                       
+                            <div class="span3">
+                                <h3>Categoria</h3>
+                                    <select name="banner-category"  id="banner-category">
+
+                                        <option value="banner_telecomunicaciones">Telecomunicaciones</option>
+                                        <option value="banner_electromedicina">Electromedicina</option>
+
+                                    </select>  
+                            </div>
                             <div style="clear: both"></div>
                         <div style="text-align:center">
-                            Suba una imagen con un tamaño aproximado de <span class="label label-info">670x300 pixeles</span> para su mejor visualizacion.
+                            Suba una imagen con un tamaño aproximado de <span class="label label-info">940x300 pixeles</span> para su mejor visualizacion.
                             <div style="clear: both"></div>
                         </div>
                       </form>
@@ -317,7 +480,8 @@ $db = conect();
       !function ($) {
         $(function(){
           // carousel demo
-          $('#myCarousel').carousel()
+          $('#carrouselElectromedicina').carousel()
+          $('#carrouselTelecomunicaciones').carousel()
         })
       }(window.jQuery)
     </script>

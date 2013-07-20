@@ -497,17 +497,18 @@ function btn_delete_product(product_id){
 }
 
 
-function btn_borrar_banner(id){
+function btn_borrar_banner(id,banner_table){
 
     $.ajax({
             type: "POST",
             url: "./actions/borrar-banner.php",
             data: {
-                id:id
+                id:id,
+                banner_table:banner_table
             },
             success: function(){
 
-                $('#'+id).remove();
+                //$('#'+id).remove();
                 url = "./banner-administrator.php";
                 window.location = url;
           }

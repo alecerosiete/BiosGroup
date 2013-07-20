@@ -22,11 +22,10 @@ function consultaPerfil($ci){
       }
       return $p['PERFIL'];
 }
-
+/*
 function getDatosDePadron($ci){
     $db = conect();
     
-    /* Obtiene datos del usuario */
     $sql = "SELECT pw.*, pb.`NOMBRE DEL BANCO` AS NOMBREBANCO FROM pddirweb pw INNER JOIN prparban pb ON pw.BANCO = pb.BANCO AND pw.`CEDULA DE IDENTIDAD` = $ci";
     $statement = $db->prepare($sql);
     $statement->execute();
@@ -35,7 +34,7 @@ function getDatosDePadron($ci){
     $db = null;
     return $rowInfo;
 }
-
+*/
 
 
 function getTipoDeUsuario($ci){
@@ -66,6 +65,7 @@ function getUserInfo(){
     return $rowInfo;
 }
 
+/*
 function getCiudad($key){
     $db = conect();
     $sql = "SELECT * FROM pdparciud WHERE CIUDAD = '$key';";
@@ -76,7 +76,9 @@ function getCiudad($key){
     $db = null;
     return $ciudad['DESCRIPCION'];
 }
+*/
 
+/*
 function getLocalidad($key){
     $db = conect();
     $sql = "SELECT * FROM pdparloca WHERE LOCALIDAD = '$key';";
@@ -87,7 +89,9 @@ function getLocalidad($key){
     $db = null;
     return $localidad['DESCRIPCION'];
 }
+*/
 
+/*
 function getBarrio($key){
     $db = conect();
     $sql = "SELECT * FROM pdparbarr WHERE BARRIO = '$key';";
@@ -98,8 +102,9 @@ function getBarrio($key){
     $db = null;
     return $barrio['DESCRIPCION'];
 }
+*/
 
-
+/*
 function getBarrios(){
     $db = conect();
     $sql = "SELECT * FROM pdparbarr;";
@@ -111,8 +116,9 @@ function getBarrios(){
     return $barrios;
    
 }
+*/
 
-
+/*
 function getCiudades(){
     $db = conect();
     $sql = "SELECT * FROM pdparciud";
@@ -138,7 +144,8 @@ function getLocalidades(){
     return $localidades;
    
 }
-
+*/
+/*
 function getPrestamos($ci){
     $db = conect();
     $sql = "SELECT * FROM prw805web WHERE `CEDULA DE IDENTIDAD` = $ci";
@@ -150,8 +157,8 @@ function getPrestamos($ci){
     return $prestamos;
    
 }
-
-
+*/
+/*
 function getTipoDePrestamo($id){
     $db = conect();
     
@@ -164,7 +171,9 @@ function getTipoDePrestamo($id){
     return $tipoPrestamo['DESCRIPCION'];
    
 }
+*/
 
+/*
 function getTarjetas($ci){
     $db = conect();
 
@@ -177,6 +186,10 @@ function getTarjetas($ci){
     return $tarjetas;
    
 }
+ * 
+ * */
+ 
+/*
 function getAportes($ci){
     $db = conect();
 
@@ -189,9 +202,9 @@ function getAportes($ci){
     return $aportes;
    
 }
+*/
 
-
-
+/*
 function getJubilados($ci){
     $db = conect();
     $sql = "SELECT * FROM jubliqweb WHERE `CEDULA DE IDENTIDAD` = $ci";
@@ -203,7 +216,10 @@ function getJubilados($ci){
     return $jubilados;
    
 }
+ * 
+ */
 
+/*
 function getCodigoOperacion($codigo){
     $db = conect();
     $sql = "SELECT * FROM maetabcod WHERE `CODIGO OPERACION` = $codigo";
@@ -215,7 +231,8 @@ function getCodigoOperacion($codigo){
     return $codigos['DESCRIPCION'];
    
 }
-
+*/
+/*
 function getLocales(){
     $db = conect();
     $sql = "SELECT * FROM aqpartloc;";
@@ -227,6 +244,9 @@ function getLocales(){
     return $locales;
    
 }
+ * 
+ */
+
 /*
 function getProfile($ci){
      $db = conect();
@@ -280,6 +300,17 @@ function getBannerNovedades(){
     return $banner;
 }
 
+function getBanner($table){
+    $db = conect();
+    $sql = "SELECT * FROM $table";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $banner = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $banner;
+}
+
 function getCategory(){
     $db = conect();
     $sql = "SELECT * FROM category";
@@ -291,10 +322,21 @@ function getCategory(){
     return $category;
 }
 
-function getActiveCategories(){
+function getCategoryElectromedicina(){
+    $db = conect();
+    $sql = "SELECT * FROM category_electromedicina";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $category = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $category;
+}
+
+function getActiveCategories($tabla){
     $db = conect();
     $active = 1;
-    $sql = "SELECT * FROM category WHERE active = ?";
+    $sql = "SELECT * FROM $tabla WHERE active = ?";
     $statement = $db->prepare($sql);
     $statement->execute(array($active));
     $category = $statement->fetchAll();
@@ -311,14 +353,15 @@ function getCategoryById($id){
     $statement->execute(array($id));
     $category = $statement->fetch(PDO::FETCH_ASSOC);
     //print_r($rowInfo);
+    error_log("CATEG  NAME: ".$category['name']);
     $db = null;
     return $category;
 }
 
 
-function getProducts(){
+function getProducts($table_product){
     $db = conect();
-    $sql = "SELECT * FROM product";
+    $sql = "SELECT * FROM $table_product";
     $statement = $db->prepare($sql);
     $statement->execute();
     $products = $statement->fetchAll();
@@ -338,6 +381,18 @@ function getProductByCategory($category_id){
     return $products;
 }
 
+function getProductByCategoryElectromedicina($category_id){
+    $db = conect();
+    $sql = "SELECT * FROM product_electromedicina WHERE category_id = ? AND active = 1";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($category_id));
+    $products = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
+
 function getProductById($product_id){
     $db = conect();
     $sql = "SELECT * FROM product WHERE id = ?";
@@ -349,17 +404,39 @@ function getProductById($product_id){
     return $products;
 }
 
-function saveNewCategory($name,$title,$description,$image_name,$active){
+function getProductByIdElectromedicina($product_id){
     $db = conect();
-    $sql = "INSERT INTO category(id,name,title,image,description,active,registered)VALUES(NULL,'$name','$title','$image_name','$description',$active,now());";
+    $sql = "SELECT * FROM product_electromedicina WHERE id = ?";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($product_id));
+    $products = $statement->fetch(PDO::FETCH_ASSOC);
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
+function getCategoryByIdElectromedicina($product_id){
+    $db = conect();
+    $sql = "SELECT * FROM category_electromedicina WHERE id = ?";
+    $statement = $db->prepare($sql);
+    $statement->execute(array($product_id));
+    $products = $statement->fetch(PDO::FETCH_ASSOC);
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
+function saveNewCategory($name,$title,$description,$image_name,$active,$category_table){
+    $db = conect();
+    $sql = "INSERT INTO $category_table(id,name,title,image,description,active,registered)VALUES(NULL,'$name','$title','$image_name','$description',$active,now());";
     $statement = $db->prepare($sql);
     
     if($statement->execute()){
         error_log("OK");
-        echo "ok";
+
     }else {
         error_log("NO");
-        echo "no ok $sql";
+
     }
     $db = null;
     error_log($sql);
@@ -381,9 +458,9 @@ function updateCategory($name,$title,$description,$image_name,$active,$id){
     
 }
 
-function saveNewproduct($title,$description,$image_name,$active,$product_category_id,$product_category_name){
+function saveNewproduct($title,$description,$image_name,$active,$product_category_id,$product_category_name,$table_product){
     $db = conect();
-    $sql = "INSERT INTO product(id,category_id,category_name,title,description,image,image_icon,active,registered,lastUpdate) VALUES(NULL,$product_category_id,'$product_category_name','$title','$description','$image_name','$image_name',$active,now(),now());";
+    $sql = "INSERT INTO $table_product(id,category_id,category_name,title,description,image,image_icon,active,registered,lastUpdate) VALUES(NULL,$product_category_id,'$product_category_name','$title','$description','$image_name','$image_name',$active,now(),now());";
     $statement = $db->prepare($sql);
     
     if($statement->execute())
@@ -416,9 +493,9 @@ function updateCategoryState($id,$state){
     $statement = $db->prepare($sql);
     
     if($statement->execute())
-        echo("OK");
+        error_log("OK");
     else {
-        echo("NO");
+        error_log("NO");
     }
     $db = null;
     error_log($sql);
@@ -431,9 +508,9 @@ function updateProductState($id,$state){
     $statement = $db->prepare($sql);
     
     if($statement->execute())
-        echo("OK");
+        error_log("OK");
     else {
-        echo("NO");
+        error_log("NO");
     }
     $db = null;
     error_log($sql);

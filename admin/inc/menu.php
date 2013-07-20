@@ -1,6 +1,6 @@
 <?php
 //assertUser();
-//$user = getUser();
+$user = getUser();
 
 ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -15,8 +15,21 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="./index.php">Home</a></li>
-              <li><a href="./category.php">Categorias</a></li>
-              <li><a href="./product.php">Productos</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="./category.php">Telecomunicaciones</a></li>
+                  <li><a href="./category_electromedicina.php">Electromedicina</a></li>
+                </ul>
+              </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="./product.php">Telecomunicaciones</a></li>
+                  <li><a href="./product_electromedicina.php">Electromedicina</a></li>
+                </ul>
+              </li>
+              
               <li><a href="./banner-administrator.php">Banner</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones <b class="caret"></b></a>

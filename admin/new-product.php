@@ -10,7 +10,7 @@ $tipo_usuario = $user['data']['tipo_de_usuario'];
 
 $userInfo = getUserInfo();
 
-$role = getRole(ROLE_PENSIONADO);
+
 
 ?>
 <!DOCTYPE html>
@@ -60,11 +60,17 @@ $role = getRole(ROLE_PENSIONADO);
                      <select name="product-category" placeholder="Seleccione una categoria"  id="product-category-id">
                          <?php 
                             $a_category = getCategory();
-                            if(empty($a_category)){
+                            $a_category_electromedicina = getCategoryElectromedicina();
+                            if(empty($a_category)|| empty($a_category_electromedicina)){
                                    echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                             }else{ 
                            
                                 foreach ($a_category as $category) { ?>                         
+                                    <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
+                                <?php 
+                                }
+                                
+                                foreach ($a_category_electromedicina as $category) { ?>                         
                                     <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
                                 <?php 
                                 }
@@ -100,7 +106,11 @@ $role = getRole(ROLE_PENSIONADO);
                      </select>
                      <p>Puede activarlo mas tarde</p>
                      <hr>
-                     
+                     <h3>Categoria</h3>
+                     <select name="product-table" id="product-table">
+                         <option value="product">Telecomunicacion</option>
+                         <option value="product_electromedicina">Electromedicina</option>
+                     </select>
                  </div>
                 </div>
             </form>

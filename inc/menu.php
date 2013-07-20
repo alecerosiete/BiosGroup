@@ -1,5 +1,4 @@
 <?php
-include'./inc/header.php';
 ?>
 <div class="navbar" style="font-family:'SansSerfRegular';font-size:14px">
     <div class="navbar-inner">

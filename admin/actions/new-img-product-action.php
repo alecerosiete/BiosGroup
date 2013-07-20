@@ -19,13 +19,23 @@ if(string2url(basename($_FILES['product_img']['name'])) != ""){
 }
 $title = $_POST['product-title'];
 $product_category_id = $_POST['product-category'];
-$product_category_name = getCategoryById($product_category_id);
+error_log("PRODUCT_CATEGORY: ".$product_category_id);
+$table_product = $_POST['product-table'];
+if($table_product == "product"){
+    $table_category = "category";
+    $product_category_name = getCategoryById($product_category_id);
+}else{
+    $table_category = "category_electromedicina";
+    $product_category_name = getCategoryByIdElectromedicina($product_category_id);
+}
+
 $description = $_POST['product-description'];
 $image_name =  $img_name; 
 $active = $_POST['product-state'];
+
 setSuccess("Guardado con exito");
 
-saveNewProduct($title,$description,$image_name,$active,$product_category_id,$product_category_name['name']);
+saveNewProduct($title,$description,$image_name,$active,$product_category_id,$product_category_name['name'],$table_product);
 
 
 

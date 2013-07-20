@@ -60,12 +60,14 @@ $role = getRole(ROLE_PENSIONADO);
         <div class="span4">
           <h2>Categorias</h2>
           <p>Administre las categorias de productos, puede crear una nueva categoria para luego agrupar productos  mostrarlos en la seccion de Productos del sitio. </p>
-          <p><a class="btn btn-primary" href="./category.php">Ingresar &raquo;</a></p>
+          <p><a class="btn btn-primary" href="./category.php">Telecomunicaciones &raquo;</a>
+          <a class="btn btn-primary" href="./category_electromedicina.php">Electromedicina &raquo;</a></p>
         </div>
         <div class="span4">
           <h2>Productos</h2>
           <p>Administre sus productos, agregue, edite o elimine, puede agregar un numero infinito de productos asignando una categoria. </p>
-          <p><a class="btn btn-primary"  href="./product.php">Ingresar &raquo;</a></p>
+           <p><a class="btn btn-primary" href="./product.php">Telecomunicaciones &raquo;</a>
+          <a class="btn btn-primary" href="./product_electromedicina.php">Electromedicina &raquo;</a></p>
        </div>
         <div class="span4">
           <h2>Banners</h2>

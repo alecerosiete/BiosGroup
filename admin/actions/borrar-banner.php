@@ -5,9 +5,9 @@ require '../inc/conexion-functions.php';
 require '../inc/sql-functions.php';
 
 $id = $_POST['id'];
-
+$table_banner = $_POST['banner_table'];
 $db = conect();
-$sql = "DELETE FROM news WHERE id = $id";
+$sql = "DELETE FROM $table_banner WHERE id = $id";
 error_log($sql);
 $statement = $db->prepare($sql);
 $statement->execute();

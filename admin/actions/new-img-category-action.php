@@ -24,8 +24,8 @@ $title = $_POST['category-title'];
 $description = $_POST['category-description'];
 $image_name = $cat_name;
 $active = $_POST['category-state'];
-
-saveNewCategory($name,$title,$description,$image_name,$active);
+$category_table = $_POST['category-table'];
+saveNewCategory($name,$title,$description,$image_name,$active,$category_table);
 setSuccess("Guardado con exito");
 redirect("../category.php");
 ?>
