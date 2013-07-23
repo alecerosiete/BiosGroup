@@ -11,10 +11,10 @@
     margin-left:20%;
 }
 .representaciones{
-    border:8px solid #dfdfdf;
-    background: url(../img/representaciones_bg.jpg);
-    width:862px;
-    height: 361px;
+    border:0px solid #dfdfdf;
+
+    width:892px;
+    height: 384px;
     
 }
  .producto{
@@ -101,7 +101,7 @@
  }
 
  .content-right-box img {
-    border: 3px solid #cccccc;
+    border: 0px solid #cccccc;
  }
  .content-3 .box {
     margin-left: 15px;
@@ -191,20 +191,28 @@
 
    
  }
+ .class-footer{
+     width: 940px;
+     height: 78px;
+     font-size: 12px;
+     line-height: 18px; 
+     padding-top:   7px;
+     
+     background: url('../img/barra_abajo.png') repeat-x;;
+ }
  .icon_social {
-     width: 100px;
-     height: 84px;
      float:left;
-padding-top:2px;
-     background-size: 80px;
-background: url('../img/barra_abajo.png') repeat-x;;
+     height: 78px;
+     padding-top: 13px;
+    padding-left: 60px;
+    padding-right: 20px;
  }
  .text_footer{
      color:#000000;
      font-size: 12px;
      padding-left: 10px;
 padding-top:2px;
-     width: 830px;
+     width: 700px;
      height: 84px;
      background: url('../img/barra_abajo.png') repeat-x;;
      float:left;
@@ -6086,6 +6094,7 @@ a.badge:hover {
   position: relative;
   margin-bottom: 20px;
   line-height: 1;
+  background: url('../img/bg_banner_main.gif') no-repeat;
 }
 
 .carousel-inner {
@@ -6186,19 +6195,22 @@ a.badge:hover {
   left: 0;
   padding: 15px;
   background: #333333;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .carousel-caption h4,
 .carousel-caption p {
   line-height: 20px;
-  color: #ffffff;
+  color: #4a5e89;
+
 }
 
 .carousel-caption h4 {
   margin: 0 0 5px;
 }
-
+.carousel-caption h1 {
+  color: #4a5e89;
+}
 .carousel-caption p {
   margin-bottom: 0;
 }

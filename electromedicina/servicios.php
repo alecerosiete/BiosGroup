@@ -41,8 +41,8 @@ $db = conect();
          </div>
            <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">SERVICIOS</h2>
           <div class="container">
-            <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
-                <p>Proyectos, Diagnósticos y Consultorías de Equiopos Medicos.</p>
+            <div class="span11 content-left-box" style="text-align:justify;font-family:'SansSerfRegular';font-size:16px;line-height: 20px;">
+                <p>Proyectos, Diagnósticos y Consultorías de Equipos Medicos.</p>
 
 <p>Instalación y puesta en marcha de equipos de Rayos-X.</p>
 

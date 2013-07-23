@@ -41,7 +41,7 @@ $db = conect();
         width: 100%;
         padding: 10px;
         margin-top: 70px;
-        color:#DDD;
+          color: #4a5e89;
       }
       .carousel-caption h1 {
         font-size: 20px;
@@ -205,7 +205,7 @@ $db = conect();
                     
                   <div id="banners-electromedicina" class="tab-pane active" >
                     <div class="hero-unit-interno">
-                        <H3>Banners</H3>
+                        <H3>Banners Electromedicina</H3>
                             <hr style="border: 1px solid #E35300">
                             <table class="table table-hover">
                                 <thead>

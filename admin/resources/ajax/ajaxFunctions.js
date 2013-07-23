@@ -471,6 +471,29 @@ function btn_delete_category(category_id){
     });
 }
 
+function btn_delete_category_electromedicina(category_id){
+
+    $.ajax({
+            type: "POST",
+            url: "./actions/category-electromedicina-delete-action.php",
+            data: {
+                category_id:category_id
+            },
+            success: function(){
+               //$('#category_id_'+category_id).slideUp('slow');
+               $('#category_id_'+category_id).hide(500, function () {
+                        $('#category_id_'+category_id).remove();
+                });
+                
+                var msg = "<div id='msg-success' class='alert alert-success'>Eliminado exito!</div>";
+                $('#msg').html(msg).hide().slideDown('fast');
+                $('#msg').delay(1000).slideUp('fast',function(){
+                    //$('#msg-success').remove()
+                });
+             
+          }
+    });
+}
 
 function btn_delete_product(product_id){
 
@@ -496,6 +519,29 @@ function btn_delete_product(product_id){
     });
 }
 
+function btn_delete_product_electromedicina(product_id){
+
+    $.ajax({
+            type: "POST",
+            url: "./actions/product-electromedicina-delete-action.php",
+            data: {
+                product_id:product_id
+            },
+            success: function(){
+               //$('#category_id_'+category_id).slideUp('slow');
+               $('#product_id_'+product_id).hide(500, function () {
+                        $('#product_id_'+product_id).remove();
+                });
+                
+                var msg = "<div id='msg-success' class='alert alert-success'>Eliminado exito!</div>";
+                $('#msg').html(msg).hide().slideDown('fast');
+                $('#msg').delay(1000).slideUp('fast',function(){
+                    //$('#msg-success').remove()
+                });
+             
+          }
+    });
+}
 
 function btn_borrar_banner(id,banner_table){
 

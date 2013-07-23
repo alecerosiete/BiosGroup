@@ -42,7 +42,7 @@ $db = conect();
          </div>
            <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">LA EMPRESA</h2>
           <div class="container">
-            <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
+            <div class="span11 content-left-box" style="text-align:justify;font-family:'SansSerfRegular';font-size:16px;line-height: 20px;">
                
                     <p>BIOS GROUP S.R.L. es una empresa creada en el año 2002, con cede comercial en Tte. 
 

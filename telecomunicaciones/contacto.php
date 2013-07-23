@@ -1,4 +1,8 @@
-
+<?php
+require '../admin/inc/session.inc';
+require '../admin/inc/conexion-functions.php';
+require '../admin/inc/sql-functions.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,17 +34,12 @@
           <?php include '../inc/menu.php';?>
           
          <div class="banner" style="margin-top:0">
-			<object type="application/x-shockwave-flash" 
-			width="940" height="260" data="../img/banner_arriba.swf">
-			<param name="movie" value="../img/banner_arriba.swf">
-
-			</param>
-			</object>
+			<?php include '../inc/banner-telecomunicaciones.php';?>
           
          </div>
            <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">CONTÁCTENOS</h2>
           <div class="container">
-            <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
+            <div class="span11  content-left-box" style="text-align:justify;font-family:'SansSerfRegular';font-size:16px;line-height: 20px;">
                 <p>Si desea hacernos alguna consulta, sugerencia o pedido, le invitamos a completar el siguiente formulario, su consulta nos interesa, muchas gracias.</p>
                 <!-- ventas@biosgroup.com.py -->
                 <div class="formulario_contactos">
@@ -82,7 +81,7 @@
               <?php include_once '../inc/footer.php';?>
          </div>
       </div>
-    <script src="../js/jquery.js"></script>
+
     <script src="../js/bootstrap.js"></script>
    
    

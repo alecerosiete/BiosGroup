@@ -6,15 +6,6 @@ $user = getUser();
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
-$db = conect();
-$tipo_usuario = $user['data']['tipo_de_usuario'];
-
-$userInfo = getUserInfo();
-
-
-$role = getRole(ROLE_PENSIONADO);
-
-//print_r($role);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,15 +70,12 @@ $role = getRole(ROLE_PENSIONADO);
       <hr>
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; BiosGroup 2013</p>
       </footer>
 
     </div> <!-- /container -->
     
-    
-
-    
-    
+        
     <?php require './inc/footer.php'; ?>
     <script>
       !function ($) {
@@ -97,24 +85,7 @@ $role = getRole(ROLE_PENSIONADO);
         })
       }(window.jQuery)
     </script>
-    <script type="text/javascript">
-            // Executes the function when DOM will be loaded fully
-            $(document).ready(function () {	
-                    // hover property will help us set the events for mouse enter and mouse leave
-                    $('.navigation li').hover(
-                            // When mouse enters the .navigation element
-                            function () {
-                                    //Fade in the navigation submenu
-                                    $('ul', this).fadeIn(); 	// fadeIn will show the sub cat menu
-                            }, 
-                            // When mouse leaves the .navigation element
-                            function () {
-                                    //Fade out the navigation submenu
-                                    $('ul', this).fadeOut();	 // fadeOut will hide the sub cat menu		
-                            }
-                    );
-            });
-        </script>
+    
         <script src="./resources/ajax/ajaxFunctions.js"></script>
   </body>
 </html>

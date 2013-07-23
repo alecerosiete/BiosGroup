@@ -1,18 +1,16 @@
 <?php
 
-
-$db = conect();
 ?>
 <!-- Carousel
 ================================================== -->
-           <div id="myCarousel" class="carousel slide">
+           <div id="banner-nuevos-productos-electromedicina" class="carousel slide">
              <div class="carousel-inner">
                
                  <!-- Obtiene las imagenes -->
                  <?php
                  
-                    $a_banner = getBanner('banner_telecomunicaciones');
-                    
+                    $a_banner = getBanner('nuevos_prod_electromedicina');
+                    //print_r($a_banner);
                     $active = 0;
                     foreach ($a_banner as $banner) {
                         
@@ -22,8 +20,8 @@ $db = conect();
                         }else{
                            echo "<div class='item'>";
                         }
-       
-                        echo "<div align='center'><img align='center' src='../admin/resources/images/banner/".$banner['banner_name']."' alt=".$banner['banner_title']."></div>";   
+                                   
+                        echo "<img src='../admin/resources/images/banner/".$banner['banner_name']."' alt='$banner'>";
                         echo "<div class='container'></div>";
                         ?>
                         <div class="carousel-caption">
@@ -49,8 +47,8 @@ $db = conect();
 
                 }else{                        
                 ?>
-                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                  <a class="left carousel-control" href="#banner-nuevos-productos-electromedicina" data-slide="prev">&lsaquo;</a>
+                  <a class="right carousel-control" href="#banner-nuevos-productos-electromedicina" data-slide="next">&rsaquo;</a>
                  <?php
                 }
                 ?>

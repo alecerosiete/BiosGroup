@@ -20,6 +20,7 @@ $db = conect();
             color:#ccc;
             text-decoration: none;
         }
+        
     </style>
 
   </head>
@@ -41,14 +42,14 @@ $db = conect();
          </div>
            <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">REPRESENTACIONES</h2>
           <div class="container">
-            <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
+            <div class="span11 " style="text-align:justify;font-family:'SansSerfRegular';font-size:16px;line-height: 20px;">
                
                 <div class="clearfix"></div>
             </div>
           </div>
            <div class="container">
                <div class="span11" >
-                   <div class="representaciones" >
+                   <div class="representaciones" style="background: url(../img/repre_electromedicina.png);">
                         
                         
                     </div>                 

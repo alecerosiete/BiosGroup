@@ -45,6 +45,8 @@ $db = conect();
          <div class="banner" style="margin-top:0">
 			<?php include '../inc/banner-electromedicina.php';?>
          </div>
+          
+          
           <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">BIENVENIDOS</h2>
          <div class="content-2">
              <div class="content-left-box" style="font-family:'SansSerfRegular';text-justify:justify ;font-size:16px;line-height: 20px; padding-top:40px">
@@ -64,21 +66,16 @@ La empresa cuenta la habilitación del Ministerio de Salud pública y Bienestar 
 Comercialización, Servicio de mantenimiento y Medición de Parámetros Radiológicos de 
 Equipos Médicos. <br>
              </div>
-             <div class="content-right-box">
+             <!--div class="content-right-box">
                  <object type="application/x-shockwave-flash" 
 					width="400" height="263" data="../img/nuevos_productos.swf">
 					<param name="movie" value="../img/nuevos_productos.swf">
 
 					</param>
 					</object>
-             </div>
+             </div-->
              <div class="content-right-box">
-                 <! - - object type="application/x-shockwave-flash" 
-					width="400" height="263" data="../img/nuevos_productos.swf">
-					<param name="movie" value="../img/nuevos_productos.swf">
-
-					</param>
-					</object-->
+                 <?php include '../inc/banner-nuevos-productos-electromedicina.php'?>
              </div>
              <div class="clearfix"></div>
          </div>

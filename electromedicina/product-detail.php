@@ -100,8 +100,8 @@ $product = getProductByIdElectromedicina($product_id);
               <?php include_once '../inc/footer.php';?>
          </div>
       </div>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap.js"></script>
+
+    <script src="../../../../../js/bootstrap.js"></script>
    
     
   </body>

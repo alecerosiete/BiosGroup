@@ -6009,6 +6009,7 @@ a.badge:focus {
   position: relative;
   margin-bottom: 20px;
   line-height: 1;
+  background: url('../../../../../img/bg_banner_main.gif') no-repeat;
 }
 
 .carousel-inner {
@@ -6136,15 +6137,17 @@ a.badge:focus {
   left: 0;
   padding: 15px;
   background: #333333;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .carousel-caption h4,
 .carousel-caption p {
   line-height: 20px;
-  color: #ffffff;
+  color: #4a5e89;
 }
-
+.carousel-caption h1 {
+  color: #4a5e89;
+}
 .carousel-caption h4 {
   margin: 0 0 5px;
 }

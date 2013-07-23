@@ -29,6 +29,7 @@
       }
       .carousel-caption h1 {
         font-size: 20px;
+  color: #4a5e89;
       }
       .carousel-caption .lead,
       .carousel-caption .btn {

@@ -5971,14 +5971,13 @@ a.badge:hover {
   bottom: 0;
   left: 0;
   padding: 15px;
-  background: #333333;
-  background: rgba(0, 0, 0, 0.75);
+  
 }
 
 .carousel-caption h4,
 .carousel-caption p {
   line-height: 20px;
-  color: #ffffff;
+  color: #4a5e89;
 }
 
 .carousel-caption h4 {

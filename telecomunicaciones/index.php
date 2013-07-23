@@ -1,5 +1,7 @@
 <?php
-
+require '../admin/inc/session.inc';
+require '../admin/inc/conexion-functions.php';
+require '../admin/inc/sql-functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,12 +53,7 @@ El Departamento Tecnico cuenta con Personal Certificado por Fabrica, para la pre
                  
              </div>
              <div class="content-right-box">
-                 <object type="application/x-shockwave-flash" 
-					width="400" height="263" data="../img/nuevos_productos.swf">
-					<param name="movie" value="../img/nuevos_productos.swf">
-
-					</param>
-					</object>
+                 <a href="#"><img src="../img/camaras ip.png"></a>
              </div>
              <div class="content-right-box">
                  

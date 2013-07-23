@@ -27,5 +27,9 @@ $active = $_POST['category-state'];
 $category_table = $_POST['category-table'];
 saveNewCategory($name,$title,$description,$image_name,$active,$category_table);
 setSuccess("Guardado con exito");
-redirect("../category.php");
+if($category_table == "category"){
+    redirect("../category.php");
+}else{
+    redirect("../category_electromedicina.php");
+}
 ?>

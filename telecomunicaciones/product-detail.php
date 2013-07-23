@@ -42,12 +42,7 @@ $product = getProductById($product_id);
           <?php include '../inc/menu.php';?>
           
          <div class="banner" style="margin-top:0">
-			<object type="application/x-shockwave-flash" 
-			width="940" height="260" data="../img/banner_arriba.swf">
-			<param name="movie" value="../img/banner_arriba.swf">
-
-			</param>
-			</object>
+			<?php include '../inc/banner-telecomunicaciones.php';?>
           
          </div>
           <style>

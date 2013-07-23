@@ -1,3 +1,8 @@
+<?php
+require '../admin/inc/session.inc';
+require '../admin/inc/conexion-functions.php';
+require '../admin/inc/sql-functions.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -31,17 +36,12 @@
           <?php include '../inc/menu.php';?>
           
          <div class="banner" style="margin-top:0">
-			<object type="application/x-shockwave-flash" 
-			width="940" height="260" data="../img/banner_arriba.swf">
-			<param name="movie" value="../img/banner_arriba.swf">
-
-			</param>
-			</object>
+			<?php include '../inc/banner-telecomunicaciones.php';?>
           
          </div>
            <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">LA EMPRESA</h2>
           <div class="container">
-            <div class="span11" style="text-align:justify;font-family:'SansSerfRegular'">
+            <div class="span11  content-left-box" style="text-align:justify;font-family:'SansSerfRegular';font-size:16px;line-height: 20px;">
                
                     <p>BIOS GROUP S.R.L. es una empresa creada en el año 2002, con cede comercial en Tte. Martinez Ramella Nº 1.350, Asunción, Paraguay. </p>
                     <p>El staff de BIOS GROUP esta integrado por personal idóneo en cada una de las especialidades en la que presta sus Servicios y con un amplio respeto por satisfacer las expectativas del cliente, así como un alto grado de ética de cada uno de sus miembros.<br>
@@ -59,7 +59,7 @@
               <?php include_once '../inc/footer.php';?>
          </div>
       </div>
-    <script src="../js/jquery.js"></script>
+
     <script src="../js/bootstrap.js"></script>
    
    

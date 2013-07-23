@@ -92,7 +92,7 @@ $userInfo = getUserInfo();
                             $label = $product['active'] == 1 ? 'Desactivar' : 'Activar';
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$product['id']."' onclick='(btn_active_product(".$product['id']."))'/></td>";
                             $html .= "<td style='text-align: center'><a href='./edit-product.php?product_id=".$product['id']."' class='btn'>Editar</a></td>";
-                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_product(".$product['id']."))'/></td></tr>";
+                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_product_electromedicina(".$product['id']."))'/></td></tr>";
                         }    
                     }
                     echo $html;
