@@ -42,7 +42,7 @@ $db = conect();
          <?php include '../inc/menu.php';?>
          
          
-         <div class="banner" style="margin-top:0">
+         <div class="banner" style="margin-top:0;">
 			<?php include '../inc/banner-electromedicina.php';?>
          </div>
           
@@ -74,7 +74,7 @@ Equipos Médicos. <br>
 					</param>
 					</object>
              </div-->
-             <div class="content-right-box">
+             <div class="content-right-box" style="border:8px solid #ccc">
                  <?php include '../inc/banner-nuevos-productos-electromedicina.php'?>
              </div>
              <div class="clearfix"></div>

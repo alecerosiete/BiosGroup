@@ -382,16 +382,9 @@ function btn_active_category(category_id){
                 category_id:category_id,
                 active:active
             },
-            success: function(data){
-                var msg = "";
-                if(data == "OK"){
-                    
-                    msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
-                }else{
-                    msg += "<div id='msg-success' class='alert alert-danger'>Ocurrio un error!</div>";
-                }   
-              
-              
+            success: function(){
+               var msg = "";
+               msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
                $('#msg').html(msg).hide().slideDown('fast');
                $('#msg').delay(1000).slideUp('fast',function(){
                    //$('#msg-success').remove()
@@ -428,7 +421,7 @@ function btn_active_product(product_id){
             },
             success: function(data){
                 var msg = "";
-                if(data == "OK"){
+                if(data == 0){
                     
                     msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
                 }else{
@@ -446,6 +439,110 @@ function btn_active_product(product_id){
     });
 }
 
+/* Boton activar producto */
+function btn_active_product_electromedicina(product_id){
+    
+    var active = 0;
+    var activate_label = $('#activate_'+product_id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_'+product_id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_'+product_id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-product-electromedicina-state.php",
+            data: {
+                product_id:product_id,
+                active:active
+            },
+            success: function(){
+                var msg = "";
+                msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                             
+              
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+}
+
+function option_active_hot_telecomunicaciones(product_id){
+  
+        var active = 0;
+        var activate_label = $('#activate_hot_'+product_id).is(':checked');
+
+        if(activate_label){
+            //activa una categoria
+            var hot = "Activar";
+            active = 1;
+        }else{
+            //desactiva una categoria
+            var hot = "Desactivar";
+            active = 0;
+        }
+        
+        $.ajax({
+            type: "POST",
+            url: "./actions/active-product-hot-telecomunicaciones-state.php",
+            data: {
+                product_id:product_id,
+                active:active
+            },
+            success: function(){
+                    var msg = "";
+                    msg += "<div id='msg-success' class='alert alert-success'>"+(hot == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                    $('#msg').html(msg).hide().slideDown('fast');
+                    $('#msg').delay(1000).slideUp('fast',function(){
+                        //$('#msg-success').remove()
+                    });
+        
+            }
+        });
+}
+
+function option_active_hot_electromedicina(product_id){
+  
+        var active = 0;
+        var activate_label = $('#activate_hot_'+product_id).is(':checked');
+
+        if(activate_label){
+            //activa una categoria
+            var hot = "Activar";
+            active = 1;
+        }else{
+            //desactiva una categoria
+            var hot = "Desactivar";
+            active = 0;
+        }
+        
+        $.ajax({
+            type: "POST",
+            url: "./actions/active-product-hot-electromedicina-state.php",
+            data: {
+                product_id:product_id,
+                active:active
+            },
+            success: function(){
+                    var msg = "";
+                    msg += "<div id='msg-success' class='alert alert-success'>"+(hot == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                    $('#msg').html(msg).hide().slideDown('fast');
+                    $('#msg').delay(1000).slideUp('fast',function(){
+                        //$('#msg-success').remove()
+                    });
+        
+            }
+        });
+}
 
 function btn_delete_category(category_id){
 

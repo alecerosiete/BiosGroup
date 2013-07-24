@@ -1,14 +1,9 @@
 <?php
 require './inc/session.inc';
 assertUser();
-$user = getUser();
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
-$db = conect();
-$tipo_usuario = $user['data']['tipo_de_usuario'];
-
-$userInfo = getUserInfo();
 
 
 ?>
@@ -74,7 +69,8 @@ $userInfo = getUserInfo();
                     <th width="5%">ID</th>
                     <th width="30%">Nombre</th>
                     <th width="30%">Categoria</th>
-                    <th width="15%">Creado</th>                    
+                    <th width="20%" style="text-align: center">Creado</th>   
+                    <th width="10%" style="text-align: center">Destacado</th>
                     <th width="10%" style="text-align: center">Activo</th>
                     <th width="8%" style="text-align: center">Editar</th>
                     <th width="8%" style="text-align: center">Borrar</th>
@@ -88,10 +84,13 @@ $userInfo = getUserInfo();
                             $html .= "<tr id='product_id_".$product['id']."'><td>".$product['id']."</td>";
                             $html .= "<td>".$product['title']."</td>";
                             $html .= "<td>".$product['category_name']."</td>";
-                            $html .= "<td>".$product['registered']."</td>";
+                            $html .= "<td style='text-align:center'>".$product['registered']."</td>";
+                            $checked = $product['hot'] == 1 ? 'checked' : '';
+                            $html .= "<td style='text-align:center'><input type='checkbox' $checked name='hot' id='activate_hot_".$product['id']."' onclick='(option_active_hot_electromedicina(".$product['id']."))'></td>";
+                            
                             $label = $product['active'] == 1 ? 'Desactivar' : 'Activar';
-                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$product['id']."' onclick='(btn_active_product(".$product['id']."))'/></td>";
-                            $html .= "<td style='text-align: center'><a href='./edit-product.php?product_id=".$product['id']."' class='btn'>Editar</a></td>";
+                            $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$product['id']."' onclick='(btn_active_product_electromedicina(".$product['id']."))'/></td>";
+                            $html .= "<td style='text-align: center'><a href='./edit-product-electromedicina.php?product_id=".$product['id']."' class='btn'>Editar</a></td>";
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_product_electromedicina(".$product['id']."))'/></td></tr>";
                         }    
                     }

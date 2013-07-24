@@ -370,6 +370,17 @@ function getProducts($table_product){
     return $products;
 }
 
+function getProductsHot($table_product){
+    $db = conect();
+    $sql = "SELECT * FROM $table_product where hot = 1";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $products = $statement->fetchAll();
+    //print_r($rowInfo);
+    $db = null;
+    return $products;
+}
+
 function getProductByCategory($category_id){
     $db = conect();
     $sql = "SELECT * FROM product WHERE category_id = ? AND active = 1";
@@ -458,6 +469,21 @@ function updateCategory($name,$title,$description,$image_name,$active,$id){
     
 }
 
+function updateCategoryElectromedicina($name,$title,$description,$image_name,$active,$id){
+    $db = conect();
+    $sql = "UPDATE category_electromedicina SET name = ?,title = ?,image = ?,description = ?,active = ?,registered = NOW() WHERE id = ?";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute(array($name,$title,$image_name,$description,$active,$id)))
+        error_log("OK");
+    else {
+        error_log("NO");
+    }
+    $db = null;
+    error_log($sql);
+    
+}
+
 function saveNewproduct($title,$description,$image_name,$active,$product_category_id,$product_category_name,$table_product){
     $db = conect();
     $sql = "INSERT INTO $table_product(id,category_id,category_name,title,description,image,image_icon,active,registered,lastUpdate) VALUES(NULL,$product_category_id,'$product_category_name','$title','$description','$image_name','$image_name',$active,now(),now());";
@@ -487,19 +513,49 @@ function updateProduct($title,$description,$image_name,$active,$product_category
     error_log($sql);
 }
 
-function updateCategoryState($id,$state){
+function updateProductElectromedicina($title,$description,$image_name,$active,$product_category_id,$product_category_name,$id){
     $db = conect();
-    $sql = "UPDATE category SET active = $state WHERE id = $id";
+    $sql = "UPDATE product_electromedicina SET category_id = ?, category_name = ?,title = ?,description = ?,image = ?,image_icon = ?,active = ?,lastUpdate = NOW() WHERE id = ?";
     $statement = $db->prepare($sql);
     
-    if($statement->execute())
+    if($statement->execute(array($product_category_id,$product_category_name,$title,$description,$image_name,$image_name,$active,$id)))
         error_log("OK");
     else {
         error_log("NO");
     }
     $db = null;
     error_log($sql);
-    
+}
+
+
+function updateCategoryState($id,$state){
+    $db = conect();
+    $sql = "UPDATE category SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    $db = null;
+    if($statement->execute()){
+        error_log("OK");
+
+    }else {
+        error_log("NO");
+
+    }
+
+}
+
+function updateCategoryElectromedicinaState($id,$state){
+    $db = conect();
+    $sql = "UPDATE category_electromedicina SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    $db = null;
+    if($statement->execute()){
+        error_log("OK");
+
+    }else {
+        error_log("NO");
+
+    }
+
 }
 
 function updateProductState($id,$state){
@@ -507,14 +563,68 @@ function updateProductState($id,$state){
     $sql = "UPDATE product SET active = $state WHERE id = $id";
     $statement = $db->prepare($sql);
     
-    if($statement->execute())
+    if($statement->execute()){
         error_log("OK");
-    else {
+        
+    }else {
         error_log("NO");
+        $db = null;
+        return(-1);
     }
     $db = null;
     error_log($sql);
+    return(0);
+}
+
+function updateProductElectromedicinaState($id,$state){
+    $db = conect();
+    $sql = "UPDATE product_electromedicina SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
     
+    if($statement->execute()){
+        error_log("OK");
+        
+    }else {
+        error_log("NO");
+
+    }
+    $db = null;
+    error_log($sql);
+
+}
+
+function updateProductTelecomunicacionesHotState($id,$state){
+    $db = conect();
+    $sql = "UPDATE product SET hot = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute()){
+        error_log("OK");
+        
+    }else {
+        error_log("NO");
+
+    }
+    $db = null;
+    error_log($sql);
+
+}
+
+function updateProductElectromedicinaHotState($id,$state){
+    $db = conect();
+    $sql = "UPDATE product_electromedicina SET hot = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    
+    if($statement->execute()){
+        error_log("OK");
+        
+    }else {
+        error_log("NO");
+
+    }
+    $db = null;
+    error_log($sql);
+
 }
 
 function getTituloNovedades(){

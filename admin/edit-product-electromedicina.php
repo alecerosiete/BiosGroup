@@ -6,6 +6,8 @@ require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
 
+$product_id = $_GET['product_id'];
+$product = getProductByIdElectromedicina($product_id);
 
 ?>
 <!DOCTYPE html>
@@ -39,34 +41,31 @@ require './inc/sql-functions.php';
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Agregar nuevo producto.</h1>
-       <form name="save-form-new-product" action="./actions/new-img-product-action.php" method="POST" enctype="multipart/form-data">
+        <h1>Editar producto.</h1><hr>
+       <form name="update-form-new-product" action="./actions/update-img-product-electromedicina-action.php" method="POST" enctype="multipart/form-data">
            <div align="right">    
-                <button class="btn btn-large" type="submit" id="btn-save-new-product" >Guardar</button>
-                <a href="./product.php" class="btn btn-large">Cancelar</a>
+                <button class="btn btn-large" type="submit" id="btn-update-new-product" >Guardar</button>
+                <a href="./product_electromedicina.php" class="btn btn-large">Cancelar</a>
             </div>
-           <hr>
+           
            <!-- Example row of columns -->
                 <div class="row">
                   <div class="span4">
+                  <input type="hidden" value="<?=$product['id']?>" name="product-id" id="product-id">    
                     <h3>Titulo</h3>
-                    <input type="text" name="product-title" style="width:280px" id="product-title" required placeholder="Titulo para el producto">
+                    <input type="text" value="<?=$product['title']?>"name="product-title" style="width:280px" id="product-title" required placeholder="Titulo para el producto">
                     <h3>Categoria</h3>
                      <select name="product-category" placeholder="Seleccione una categoria"  id="product-category-id">
                          <?php 
-                            $a_category = getCategory();
-                            $a_category_electromedicina = getCategoryElectromedicina();
-                            if(empty($a_category)|| empty($a_category_electromedicina)){
+                         
+                            $a_category = getCategoryElectromedicina();
+                            if(empty($a_category)){
                                    echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                             }else{ 
                            
-                                foreach ($a_category as $category) { ?>                         
-                                    <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
-                                <?php 
-                                }
-                                
-                                foreach ($a_category_electromedicina as $category) { ?>                         
-                                    <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
+                                foreach ($a_category as $c) { ?>    
+                         
+                                <option value="<?= $c['id']?>" <?= $c['id'] == $product['category_id'] ? " selected" : "" ?>><?=$c['name']?></option>                         
                                 <?php 
                                 }
                             }
@@ -74,13 +73,13 @@ require './inc/sql-functions.php';
                      </select>
                              
                     <h3>Descripcion</h3>
-                    <textarea name="product-description" style="width:280px" rows="5"id="product-description" required placeholder="Descripcion de producto"></textarea>
+                    <textarea name="product-description" style="width:280px" rows="5"id="product-description" required placeholder="Descripcion de producto"><?= $product['description']?></textarea>
 
                   </div>
                   <div class="span4">
                     <h3>Imagen</h3>
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="box-img">
-                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="../img/default.png" /></div>
+                        <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="../img/default.png" /></div>
                       <div>
                         <span class="btn btn-file">
                             <span class="fileupload-new"  >Seleccione un banner</span>
@@ -96,16 +95,14 @@ require './inc/sql-functions.php';
                  <div class="span3">
                      <h3>Estado</h3>
                      <select name="product-state" id="product-state">
-                         <option value="1">Activo</option>
-                         <option value="0">Inactivo</option>
+                         <?php $selected_1 = $selected_2 = "" ?>
+                          <?= $product['active'] == 1 ? $selected_1 = "selected" : $selected_2="selected" ?>
+                         <option value="1" <?= $selected_1 ?>>Activo</option>
+                         <option value="0" <?= $selected_2 ?>>Inactivo</option>
                      </select>
                      <p>Puede activarlo mas tarde</p>
                      <hr>
-                     <h3>Categoria</h3>
-                     <select name="product-table" id="product-table">
-                         <option value="product">Telecomunicacion</option>
-                         <option value="product_electromedicina">Electromedicina</option>
-                     </select>
+                     
                  </div>
                 </div>
             </form>

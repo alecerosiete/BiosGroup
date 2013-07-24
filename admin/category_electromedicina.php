@@ -91,7 +91,7 @@ $userInfo = getUserInfo();
                             $html .= "<td>".$category['registered']."</td>";
                             $label = $category['active'] == 1 ? 'Desactivar' : 'Activar';
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='".$label."' id='activate_".$category['id']."' onclick='(btn_active_category(".$category['id']."))'/></td>";
-                            $html .= "<td style='text-align: center'><a href='./edit-category.php?category_id=".$category['id']."' class='btn'>Editar</a></td>";
+                                $html .= "<td style='text-align: center'><a href='./edit-category-electromedicina.php?category_id=".$category['id']."' class='btn'>Editar</a></td>";
                             $html .= "<td style='text-align: center'><input type='button' class='btn' value='Borrar' onclick='(btn_delete_category_electromedicina(".$category['id']."))'/></td></tr>";
                         }    
                     }

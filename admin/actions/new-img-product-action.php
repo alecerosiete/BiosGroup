@@ -37,6 +37,10 @@ setSuccess("Guardado con exito");
 
 saveNewProduct($title,$description,$image_name,$active,$product_category_id,$product_category_name['name'],$table_product);
 
+if($table_category == 'category'){
+    redirect("../product.php");
+}else{
+    redirect("../product_electromedicina.php");
+}
 
 
-redirect("../product.php");

@@ -44,13 +44,14 @@ $db = conect();
             <div class="span11  content-left-box" style="text-align:justify;font-family:'SansSerfRegular';font-size:16px;line-height: 20px;">
                 <p>Si desea hacernos alguna consulta, sugerencia o pedido, le invitamos a completar el siguiente formulario, su consulta nos interesa, muchas gracias.</p>
                 <?php 
-                    $destinatario = "aruizdiaz@gmail.com";
+                    $destinatario = "alecerosiete@gmail.com";
                     if (isset ($_POST['enviar'])) {
                                     
                         
                         $headers = "From: ".$_POST['email']. "rn";
                         if ( mail ($destinatario, "Nombre y apellidos : ".stripcslashes ($_POST['nombre'])." ".stripcslashes ($_POST['apellido'])."\nCedula de Identidad: ".stripcslashes ($_POST['ci'])."\nTelefono: ".stripcslashes ($_POST['telefono'])."\nEmail: ".stripcslashes ($_POST['email'])."\n Consulta: ".stripcslashes ($_POST['consulta']), $headers )){
                                 setSuccess("Enviado correctamente");
+                                include("../admin/tmpl/success_panel.inc");
                         }else {
                                 addError("No se pudo enviar su mensaje, intentelo nuevamente");
                                 include("../admin/tmpl/error_panel.inc");
@@ -102,7 +103,7 @@ $db = conect();
               <?php include_once '../inc/footer.php';?>
          </div>
       </div>
-    <script src="../js/jquery.js"></script>
+
     <script src="../js/bootstrap.js"></script>
    
    

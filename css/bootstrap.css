@@ -92,9 +92,9 @@
 .content-right-box{
      
      width: 400px;
-     height: 263px;
+     height: 288px;
 
-     margin:  14px 10px 20px 0px;
+     margin:  0px 10px 20px 0px;
 
      float:right;
 
@@ -6094,7 +6094,15 @@ a.badge:hover {
   position: relative;
   margin-bottom: 20px;
   line-height: 1;
+  
   background: url('../img/bg_banner_main.gif') no-repeat;
+}
+
+.carousel_mini {
+  position: relative;
+  margin-bottom: 20px;
+  line-height: 1;
+  background: #3D5873;
 }
 
 .carousel-inner {
@@ -6197,11 +6205,24 @@ a.badge:hover {
   background: #333333;
   background: rgba(0, 0, 0, 0.1);
 }
-
+.carousel-caption-mini {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  background: #5785B6;
+  opacity: 0.8;
+}
+.carousel-caption-mini h4{
+     line-height: 20px;
+  color: #ffffff;
+  text-align: center;
+}
 .carousel-caption h4,
 .carousel-caption p {
   line-height: 20px;
-  color: #4a5e89;
+  color: #fff;
 
 }
 

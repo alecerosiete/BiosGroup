@@ -52,11 +52,11 @@ Representa y Distribuye marcas de renombre internacional tales como Exfo, Sumito
 El Departamento Tecnico cuenta con Personal Certificado por Fabrica, para la prestacion de Servicios de Diagnostico, Soporte y Reparaciones.
                  
              </div>
-             <div class="content-right-box">
+             <!--div class="content-right-box">
                  <a href="#"><img src="../img/camaras ip.png"></a>
-             </div>
-             <div class="content-right-box">
-                 
+             </div-->
+              <div class="content-right-box" style="border:8px solid #ccc">
+                 <?php include '../inc/banner-nuevos-productos-telecomunicaciones.php'?>
              </div>
              <div class="clearfix"></div>
          </div>
