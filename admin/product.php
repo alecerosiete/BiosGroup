@@ -5,10 +5,6 @@ $user = getUser();
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
-$db = conect();
-$tipo_usuario = $user['data']['tipo_de_usuario'];
-
-$userInfo = getUserInfo();
 
 
 ?>
@@ -60,7 +56,7 @@ $userInfo = getUserInfo();
       <div class="hero-unit">
         <h1>Administracion de Productos para Telecomunicaciones.</h1>
         <div align="right">
-            <a href="./new-product.php" class="btn btn-large">Nuevo</a><hr>
+            <a href="./new-product.php?category=telecomunicaciones" class="btn btn-large">Nuevo</a><hr>
         </div>
          <table class="table table-hover">
             <thead>

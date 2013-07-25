@@ -55,7 +55,7 @@ require './inc/sql-functions.php';
       <div class="hero-unit">
         <h1>Administracion de Productos para Electromedicina.</h1>
         <div align="right">
-            <a href="./new-product.php" class="btn btn-large">Nuevo</a><hr>
+            <a href="./new-product.php?category=electromedicina" class="btn btn-large">Nuevo</a><hr>
         </div>
          <table class="table table-hover">
             <thead>

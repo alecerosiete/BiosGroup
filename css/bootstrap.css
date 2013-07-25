@@ -6198,12 +6198,14 @@ a.badge:hover {
 
 .carousel-caption {
   position: absolute;
-  right: 0;
+  margin-left: 500px;
+  margin-bottom: 180px;
+  right: 0px;
   bottom: 0;
   left: 0;
-  padding: 15px;
-  background: #333333;
-  background: rgba(0, 0, 0, 0.1);
+  padding: 0px;
+   /*background: #333333; */
+  /* background: rgba(0, 0, 0, 0.1);*/
 }
 .carousel-caption-mini {
   position: absolute;
@@ -6222,7 +6224,7 @@ a.badge:hover {
 .carousel-caption h4,
 .carousel-caption p {
   line-height: 20px;
-  color: #fff;
+  color: #4a5e89;
 
 }
 

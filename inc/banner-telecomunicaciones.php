@@ -13,32 +13,29 @@ $db = conect();
                  
                     $a_banner = getBanner('banner_telecomunicaciones');
                     
-                    $active = 0;
-                    foreach ($a_banner as $banner) {
-                        
-                        if($active == 0){
-                           echo "<div class='item active'>";
-                           $active = -1;
-                        }else{
-                           echo "<div class='item'>";
+                        $active = 0;
+                        foreach ($a_banner as $banner) {
+                            if($banner['active'] == 1){
+                                if($active == 0){
+                                   echo "<div class='item active'>";
+                                   $active = -1;
+                                }else{
+                                   echo "<div class='item'>";
+                                }
+
+                                echo "<div align='center'><img align='center' src='../admin/resources/images/banner/".$banner['banner_name']."' alt=".$banner['banner_title']."></div>";   
+                                echo "<div class='container'></div>";
+                                ?>
+                                <div class="carousel-caption">
+                                    <h1><?= $banner['banner_title'] ?></h1>
+                                    <p class="lead"> <?= $banner['banner_text'] ?></p>
+
+                                </div>
+                                <?php
+                                echo "</div>";
+
+                            }       
                         }
-       
-                        echo "<div align='center'><img align='center' src='../admin/resources/images/banner/".$banner['banner_name']."' alt=".$banner['banner_title']."></div>";   
-                        echo "<div class='container'></div>";
-                        ?>
-                        <div class="carousel-caption">
-                            <h1><?= $banner['banner_title'] ?></h1>
-                            <p class="lead"> <?= $banner['banner_text'] ?></p>
-
-                        </div>
-
-                        
-                        
-                        <?php
-                        echo "</div>";
-                        
-                    }       
-                  
                   
                  ?>                               
                  

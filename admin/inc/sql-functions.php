@@ -50,12 +50,11 @@ function getTipoDeUsuario($ci){
 }
 
 function getUserInfo(){
-
+    /*
     $db = conect();
     $user = getUser();
     $ci = $user['CI'];
 
-    /* Obtiene datos del usuario */
     $sql = "SELECT pw.*, pb.`NOMBRE DEL BANCO` AS NOMBREBANCO FROM pddirweb pw INNER JOIN prparban pb ON pw.BANCO = pb.BANCO AND `CEDULA DE IDENTIDAD` = '$ci'";
     $statement = $db->prepare($sql);
     $statement->execute();
@@ -63,6 +62,7 @@ function getUserInfo(){
     //print_r($rowInfo);
     $db = null;
     return $rowInfo;
+    */
 }
 
 /*
@@ -311,6 +311,17 @@ function getBanner($table){
     return $banner;
 }
 
+function getBannerById($table,$id){
+    $db = conect();
+    $sql = "SELECT * FROM $table WHERE id = $id";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $banner = $statement->fetch(PDO::FETCH_ASSOC);
+    //print_r($rowInfo);
+    $db = null;
+    return $banner;
+}
+
 function getCategory(){
     $db = conect();
     $sql = "SELECT * FROM category";
@@ -531,6 +542,36 @@ function updateProductElectromedicina($title,$description,$image_name,$active,$p
 function updateCategoryState($id,$state){
     $db = conect();
     $sql = "UPDATE category SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    $db = null;
+    if($statement->execute()){
+        error_log("Activar OK".$sql);
+
+    }else {
+        error_log("NO Activar ".$sql);
+
+    }
+
+}
+
+function updateBannerElectromedicinaState($id,$state){
+    $db = conect();
+    $sql = "UPDATE banner_electromedicina SET active = $state WHERE id = $id";
+    $statement = $db->prepare($sql);
+    $db = null;
+    if($statement->execute()){
+        error_log("OK");
+
+    }else {
+        error_log("NO");
+
+    }
+
+}
+
+function updateBannerTelecomunicacionesState($id,$state){
+    $db = conect();
+    $sql = "UPDATE banner_telecomunicaciones SET active = $state WHERE id = $id";
     $statement = $db->prepare($sql);
     $db = null;
     if($statement->execute()){

@@ -6,6 +6,7 @@ require '../inc/sql-functions.php';
 $titulo = $_POST["titulo-banner"];
 $texto = $_POST["texto-banner"];
 $table_banner = $_POST['banner-category'];
+$banner_id = $_POST['banner-id'];
 error_log("TABLA BANNER : ".$table_banner);
 
 $uploaddir = '../resources/images/banner/'; 
@@ -19,13 +20,16 @@ if(string2url(basename($_FILES['banner']['name'])) != ""){
        exit(0);
     } 
     $nombre_imagen = string2url(basename($_FILES['banner']['name']));
+    $sql = "UPDATE $table_banner SET banner_name = '$nombre_imagen',banner_title = '$titulo',banner_text = '$texto',registered = now(),active = 1 WHERE id = $banner_id";
+    error_log("Modificar banner ".$sql);
     
 }else{
-    $nombre_imagen = "default.png";
+    $sql = "UPDATE $table_banner SET banner_title = '$titulo',banner_text = '$texto',registered = now(),active = 1 WHERE id = $banner_id";
+
+    error_log("Modificar banner ".$sql);
 }
 /* Guarda los datos en la BD*/
 $db = conect();
-$sql = "INSERT INTO $table_banner (banner_name,banner_title,banner_text,registered,active) VALUES ('$nombre_imagen','$titulo','$texto',now(),1)";
 $statement = $db->prepare($sql);
 $statement->execute();
 

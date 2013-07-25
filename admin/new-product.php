@@ -5,7 +5,7 @@ assertUser();
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 
-
+$for_category = $_GET['category'];
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ require './inc/sql-functions.php';
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Agregar nuevo producto.</h1>
+        <h1>Agregar nuevo producto para <?=$for_category?>.</h1>
        <form name="save-form-new-product" action="./actions/new-img-product-action.php" method="POST" enctype="multipart/form-data">
            <div align="right">    
                 <button class="btn btn-large" type="submit" id="btn-save-new-product" >Guardar</button>
@@ -54,9 +54,22 @@ require './inc/sql-functions.php';
                     <h3>Categoria</h3>
                      <select name="product-category" placeholder="Seleccione una categoria"  id="product-category-id">
                          <?php 
-                            $a_category = getCategory();
+                         
+                         if($for_category == "electromedicina"){
+                           
                             $a_category_electromedicina = getCategoryElectromedicina();
-                            if(empty($a_category)|| empty($a_category_electromedicina)){
+                            if(empty($a_category_electromedicina)){
+                                   echo "<div class='alert alert-danger'>No se encontraron registros </div>";
+                            }else{ 
+                           
+                                foreach ($a_category_electromedicina as $category) { ?>                         
+                                    <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
+                                <?php 
+                                }
+                            }
+                         }else{
+                            $a_category = getCategory();
+                            if(empty($a_category)){
                                    echo "<div class='alert alert-danger'>No se encontraron registros </div>";
                             }else{ 
                            
@@ -65,11 +78,10 @@ require './inc/sql-functions.php';
                                 <?php 
                                 }
                                 
-                                foreach ($a_category_electromedicina as $category) { ?>                         
-                                    <option value="<?=$category['id']?>"><?=$category['name']?></option>                         
-                                <?php 
-                                }
+                               
                             }
+                         }
+                            
                             ?>
                      </select>
                              

@@ -6,38 +6,47 @@ $(document).ready(function(){
         var titulo = $("#titulo-banner").val();
         var texto = $("#texto-banner").val();
         var nombre_imagen = $("#banner").val().split('\\').pop();
+        
         var extension = nombre_imagen.split('.').pop();
         //validar que sean solo archivos imagen
         var validos = ["jpg", "png", "gif","jpeg"];
-        if($.inArray(extension, validos) == -1){
-            alert("Formato inválido de imagen, especifique otra imagen");
-
-        }else if(titulo.length == 0){
+        if(titulo.length == 0){
             alert("Especifique un titulo");
+            return false;
         }else if(texto.length == 0){
             alert("Especifique un texto");
+            return false;
         }
         
-        /*
-            uploadFile('banner','archivo');        
-            $.ajax({
-               type: "POST",
-               url: "./actions/save-banner-novedades.php",
-               data: {
-                   titulo:titulo,
-                   texto:texto,
-                   nombre_imagen:nombre_imagen
-
-               }
-               }).done(function() {
-
-                   alert("Guardado");
-                   window.location = "./banner-administrator.php";
-               });
-        */
+        
     });
     
-    
+       $('#btn-update-banner').click(function(){
+       
+        var titulo = $("#titulo-banner").val();
+        var texto = $("#texto-banner").val();
+        var nombre_imagen = $("#banner").val().split('\\').pop();
+        
+        var extension = nombre_imagen.split('.').pop();
+        //validar que sean solo archivos imagen
+        
+        var validos = ["jpg", "png", "gif","jpeg"];
+        if(nombre_imagen != ""){            
+            if($.inArray(extension, validos) == -1){
+                alert("Formato inválido de imagen, especifique otra imagen");
+                return false;
+            }
+        }
+        if(titulo.length == 0){
+            alert("Especifique un titulo");
+            return false;
+        }else if(texto.length == 0){
+            alert("Especifique un texto");
+            return false;
+        }
+        
+        
+    });
     
     
     /* Boton guardar nueva categoria */
@@ -395,6 +404,40 @@ function btn_active_category(category_id){
     
 }
 
+function btn_active_category_electromedicina(category_id){
+    var active = 0;
+    var activate_label = $('#activate_'+category_id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_'+category_id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_'+category_id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-category-electromedicina-state.php",
+            data: {
+                category_id:category_id,
+                active:active
+            },
+            success: function(){
+               var msg = "";
+               msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+    
+}
+
 
  /* Boton activar producto */
 function btn_active_product(product_id){
@@ -438,6 +481,83 @@ function btn_active_product(product_id){
           }
     });
 }
+
+
+/* Boton activar banner */
+function btn_active_banner_electromedicina(banner_id){
+    
+    var active = 0;
+    var activate_label = $('#activate_banner_electromedicina'+banner_id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_banner_electromedicina'+banner_id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_banner_electromedicina'+banner_id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-banner-state.php",
+            data: {
+                banner_id:banner_id,
+                active:active
+            },
+            success: function(){
+                var msg = "";
+                  
+                    msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                          
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+}
+
+
+/* Boton activar banner telecomunicaciones */
+function btn_active_banner_telecomunicaciones(banner_id){
+    
+    var active = 0;
+    var activate_label = $('#activate_banner_telecomunicaciones'+banner_id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_banner_telecomunicaciones'+banner_id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_banner_telecomunicaciones'+banner_id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-banner-telecomunicaciones-state.php",
+            data: {
+                banner_id:banner_id,
+                active:active
+            },
+            success: function(){
+                var msg = "";
+                  
+                    msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+                          
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+}
+
 
 /* Boton activar producto */
 function btn_active_product_electromedicina(product_id){
