@@ -56,8 +56,8 @@ session_destroy();
         
       <form class="form-signin" action="./actions/login.do.php" method="post">
         <h2 class="form-signin-heading" >Acceso al sistema</h2>
-        <input id="ci" type="text" class="input-block-level" placeholder="Cedula de Identidad" name="ci">
-        <input id="pin"type="password" class="input-block-level" placeholder="Pin.." name="pin">
+        <input id="username" type="text" class="input-block-level" placeholder="Usuario" name="username">
+        <input id="password"type="password" class="input-block-level" placeholder="Password" name="password">
         <button class="btn btn-large btn-primary" type="submit">Entrar</button>
         
         

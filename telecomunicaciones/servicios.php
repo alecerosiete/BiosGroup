@@ -70,7 +70,7 @@ require '../admin/inc/sql-functions.php';
                 </p>
 
                 <p>
-                    *Soluciones Integrales de Comunicaciones para Seguridad Pública 911 (Integrado).
+                    *Soluciones Integrales de Comunicaciones para Seguridad Pública 911 (Intrado).
                 </p>
 
                 <p>

@@ -34,9 +34,8 @@ $user = getUser();
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Usuarios</a></li>
-                  <li><a href="#">Mi cuenta</a></li>
-                  <li><a href="#">Ayuda</a></li>
+                  <li><a href="./users.php">Usuarios</a></li>
+                  <li><a href="./resources/Manualdeusuario-BiosGroup.pdf" target="_blank">Ayuda</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">Session</li>
                   <li><a href="#">Salir</a></li>

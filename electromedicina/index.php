@@ -66,16 +66,12 @@ La empresa cuenta la habilitación del Ministerio de Salud pública y Bienestar 
 Comercialización, Servicio de mantenimiento y Medición de Parámetros Radiológicos de 
 Equipos Médicos. <br>
              </div>
-             <!--div class="content-right-box">
-                 <object type="application/x-shockwave-flash" 
-					width="400" height="263" data="../img/nuevos_productos.swf">
-					<param name="movie" value="../img/nuevos_productos.swf">
-
-					</param>
-					</object>
-             </div-->
-             <div class="content-right-box" style="border:8px solid #ccc">
+             
+             <div class="content-right-box" style="border:8px solid #ccc;height: 348px">
                  <?php include '../inc/banner-nuevos-productos-electromedicina.php'?>
+             </div>
+              <div class="content-right-box" style="width: 400px;height: 234px;border:8px solid #ccc">
+                  <?php include '../inc/camaras-ip-vea-online.php';?>
              </div>
              <div class="clearfix"></div>
          </div>

@@ -8,10 +8,6 @@ define('DB_USER', 'biosgroup');
 define('DB_PASSWORD', 'biosgroup');
 
 define('ROLE_SYSTEM', 'Administrador');
-define('ROLE_AFILIADO', 'Activo');
-define('ROLE_DIRECTIVO', 'Directivo');
-define('ROLE_JUBILADO', 'Jubilado');
-define('ROLE_PENSIONADO', 'Pensionado');
 
 define('S_USER', 'user');
 define('S_ERROR_LIST', 'errors');
@@ -247,19 +243,6 @@ function formatoFechaMMAA($fecha)
     }
 }
 
-
-function formatoDeTarjeta($tc)
-{
-    return substr($tc, 0,4)."-".substr($tc, 4,4)."-".substr($tc, 8,4)."-".substr($tc,12,4);
-}
-
-function formatoFechaDDMMAAAA($fecha)
-{
-    if(strlen($fecha) == 7){
-        $fecha = "0".$fecha;
-    }
-    return substr($fecha, 0,2)."-".substr($fecha, 2, 2)."-".substr($fecha, 4, 4);
-}
 
 function getAccesDenied()
 {

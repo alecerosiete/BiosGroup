@@ -21,7 +21,7 @@
                            echo "<div class='item'>";
                         }
                                    
-                        echo "<center><img src='../img/products/".$banner['image']."' alt='$banner'></center>";
+                        echo "<center><a href='./product-detail.php?product-id=".$banner['id']."'><img src='../img/products/".$banner['image']."' alt='$banner'></a></center>";
                         echo "<div class='container'></div>";
                         ?>
                         <div class="carousel-caption-mini">

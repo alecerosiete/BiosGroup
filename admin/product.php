@@ -1,7 +1,7 @@
 <?php
 require './inc/session.inc';
 assertUser();
-$user = getUser();
+
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
 

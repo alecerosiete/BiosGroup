@@ -1,4 +1,0 @@
-BiosGroup
-=========
-
-Proyecto Web BiosGroup

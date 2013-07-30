@@ -293,80 +293,48 @@ $(document).ready(function(){
         }
     })
     /* Fin administracion de usuarios */
-    
-    /* Mostrar datos de consulta */
-    $('#btn-consultar').click(function(){
-        //alert("procesado...")
-        //var rows = $("#tipoLocal").val();
-        var ci = $("#input-ci").val()
-        if( !(ci)){
-            alert("Ingrese un numero de cedula valido")
-            exit();
-
-        }else{
-    
-            var $loading = $('#visualizar-consulta').html("<div class='progress progress-striped active'><div class='bar' style='width: 100%;'>Cargando.. </div></div>");
-
-             $.ajax({
-                type: "POST",
-                url: "/admin/actions/listaConsulta.php",
-                
-                data: {
-                    ci:ci
-
-                }
-                }).done(function( data ) {
-                    if(data == false){
-                        data = "<div class='alert alert-warning'>No se encontro ningun registro..</div>";
-                    }
-                    $loading.html(data);
-
-             });
-        }
-    })
-    
-    
-    
-    
+        
     /**** Mensajes ****/
     $("#msg").delay(3000).hide("fade",2000)
    //$("#error-panel").delay(4000).hide("fade",3000)
     
    
     
-    /******************/
-    
-    $("#btn-edit-user-data").click(function(){
-            var ci = $("#ci-info").val();
-            
-            var numeroDeCasa = $("#numero-de-la-casa").val();
-            //var barrio = $("#nombre-del-barrio").attr("name").val();
-            var barrio = $('select[name=nombre-del-barrio] option:selected').attr('name') 
-            
-            var ciudad = $('select[name=nombre-de-la-ciudad] option:selected').attr('name') 
-           
-            var calle = $("#nombre-de-la-calle").val();
-            var localidad = $('select[name=nombre-de-localidad] option:selected').attr('name') 
-            var celular1 = $("#celular-1").val();
-            var celular2 = $("#celular-2").val();
-            var lineaBaja1 = $("#linea-baja-1").val();
-            var lineaBaja2 = $("#linea-baja-2").val();
-            var email = $("#e-mail").val();
-            $.ajax({
-                    type: "POST",
-                    url: "./actions/edit-user-data-action.php",
-                    data: {ci:ci,numeroDeCasa:numeroDeCasa,barrio:barrio,ciudad:ciudad,calle:calle,localidad:localidad,celular1:celular1,celular2:celular2,lineaBaja1:lineaBaja1,lineaBaja2:lineaBaja2,email:email},
-                    success: function(){
-                        $("#modalUserData").modal("hide");
-                        url = "./index.php";
-                        $(location).attr('href',url);
-                  }
-            });
-            
-            
-        });  
-        
 });
+
+function btn_active_user(id){
+    var active = 0;
+    var activate_label = $('#activate_'+id).val();
+
+    if(activate_label == "Activar"){
+        //activa una categoria
+        $('#activate_'+id).val('Desactivar');
+        active = 1;
+    }else{
+        //desactiva una categoria
+        $('#activate_'+id).val('Activar');
+        active = 0;
+    }
+    //actualiza la base de datos
+    $.ajax({
+            type: "POST",
+            url: "./actions/update-user-state.php",
+            data: {
+                id:id,
+                active:active
+            },
+            success: function(){
+               var msg = "";
+               msg += "<div id='msg-success' class='alert alert-success'>"+(activate_label == 'Activar' ? 'Activado':'Desactivado')+"</div>";
+               $('#msg').html(msg).hide().slideDown('fast');
+               $('#msg').delay(1000).slideUp('fast',function(){
+                   //$('#msg-success').remove()
+               });
+               
+          }
+    });
+    
+}
 
 
  /* Boton activar Categoria */

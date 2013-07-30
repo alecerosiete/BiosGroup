@@ -380,13 +380,31 @@ $db = conect();
                                     
                             </div>
                             <div class="span3">
-                                <h3>Categoria</h3>
+                                <h3>Grupo</h3>
                                     <select name="banner-category"  id="banner-category">
 
                                         <option value="banner_telecomunicaciones">Telecomunicaciones</option>
                                         <option value="banner_electromedicina">Electromedicina</option>
 
                                     </select> 
+                                
+                                <?php 
+                                $productos = getProducts("product");
+                               
+                                ?>
+                                 <h3>Link</h3>
+                                 <p>Seleccione el producto al que sera vinculado el banner.</p>
+                                    <select name="banner-link"  id="banner-link">
+                                        <?php
+                                    foreach ($productos as $producto) {
+                                        echo "<option value='".$producto['id']."'>".$producto['title']."</option>";
+                                    };
+                                     $productos = getProducts("product_electromedicina");
+                                     foreach ($productos as $producto) {
+                                        echo "<option value='".$producto['id']."'>".$producto['title']."</option>";
+                                    };
+                                        ?>
+                                    </select>
 
                             </div>
                             <div style="clear: both"></div>

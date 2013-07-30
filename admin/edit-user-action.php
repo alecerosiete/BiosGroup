@@ -4,9 +4,9 @@ assertUser();
 
 require './inc/conexion-functions.php';
 require './inc/sql-functions.php';
+$user_id = mysql_real_escape_string($_GET['id']);
 
-
-
+$user_data = getUserById($user_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,33 +54,36 @@ require './inc/sql-functions.php';
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-         <h3>Nuevo Usuario</h3>
+         <h3>Editar Usuario</h3>
          <div align="center">
              <div class="hero-unit-interno">
-               <form action="./actions/user-insert-do.php" method="post">
-                    <table class="form-content">
+               <form action="./actions/user-edit-do.php" method="post">
+                    <table >
                       <tbody>
                         <tr>
-                          <td class="form-label">Usuario</td>
-                          <td class="form-value">
-                            <input type="text" name="username" value=""
-                                   size="20" maxlength="20"/>
+                          <td >Usuario</td>
+                          <td >
+                            <input type="text" name="username" disabled value="<?= $user_data['username']?>">
+                            <input type="hidden" name="username" value="<?= $user_data['username']?>">
                           </td>
                         </tr>
                         <tr>
-                          <td class="form-label">Nombre</td>
-                          <td class="form-value">
-                            <input type="text" name="nombre" value=""
+                          <td >Nombre</td>
+                          <td >
+                            <input type="text" name="nombre" value="<?=$user_data['nombre']?>"
                                    size="60" maxlength="100"/>
                           </td>
                         </tr>
                         <tr>
                           <td class="form-label">Estado</td>
                           <td class="form-value">
-                            <select name="active">
-                              <option selected value=1>Activo</option>
-                              <option value=0>Inactivo</option>
-                            </select>
+                              <select name="active">
+                              <?=$user_data['active'] == 1 ? "<option selected value=1>Activo</option>
+                                                         <option value=0>Inactivo</option>"
+                                                      : "<option value=1>Activo</option>
+                                                         <option selected value=0>Inactivo</option>"
+                                                        ;?>
+                              </select>
                           </td>
                         </tr>
                         

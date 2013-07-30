@@ -20,9 +20,12 @@
                             }else{
                                echo "<div class='item'>";
                             }
-
-                            echo "<img src='../admin/resources/images/banner/".$banner['banner_name']."' alt=''>";
-                            echo "<div class='container'></div>";
+                            if($banner['id_product'] > 0){
+                                echo "<a href='./product-detail.php?product-id=".$banner['id_product']."'><img src='../admin/resources/images/banner/".$banner['banner_name']."' alt=''></a>";
+                            }else{
+                                echo "<a href='#'><img src='../admin/resources/images/banner/".$banner['banner_name']."' alt=''></a>";
+                            }
+                                echo "<div class='container'></div>";
                             ?>
                             <div class="carousel-caption">
                                 <h1><?= $banner['banner_title'] ?></h1>

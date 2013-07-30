@@ -36,7 +36,7 @@ $db = conect();
           <?php include '../inc/menu.php';?>
           
          <div class="banner" style="margin-top:0">
-			<?php include '../inc/banner-electromedicina.php';?>
+			<?php include '../inc/banner-telecomunicaciones.php';?>
           
          </div>
            <h2 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5">CONTÁCTENOS</h2>
@@ -49,7 +49,9 @@ $db = conect();
                                     
                         
                         $headers = "From: ".$_POST['email']. "rn";
-                        if ( mail ($destinatario, "Nombre y apellidos : ".stripcslashes ($_POST['nombre'])." ".stripcslashes ($_POST['apellido'])."\nCedula de Identidad: ".stripcslashes ($_POST['ci'])."\nTelefono: ".stripcslashes ($_POST['telefono'])."\nEmail: ".stripcslashes ($_POST['email'])."\n Consulta: ".stripcslashes ($_POST['consulta']), $headers )){
+                        $asunto = "Bios Group - Mensaje del formulario de contatos";
+                        $contenido = "Nombre y apellido: ".stripcslashes ($_POST['nombre'])." ".stripcslashes ($_POST['apellido'])."\nCedula de Identidad: ".stripcslashes ($_POST['ci'])."\nTelefono: ".stripcslashes ($_POST['telefono'])."\nEmail: ".stripcslashes ($_POST['email'])."\nConsulta: ".stripcslashes ($_POST['consulta']);
+                        if ( mail ($destinatario,$asunto,$headers)){
                                 setSuccess("Enviado correctamente");
                                 include("../admin/tmpl/success_panel.inc");
                         }else {

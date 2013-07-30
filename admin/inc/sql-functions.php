@@ -22,271 +22,103 @@ function consultaPerfil($ci){
       }
       return $p['PERFIL'];
 }
-/*
-function getDatosDePadron($ci){
+
+function getUsers(){
     $db = conect();
-    
-    $sql = "SELECT pw.*, pb.`NOMBRE DEL BANCO` AS NOMBREBANCO FROM pddirweb pw INNER JOIN prparban pb ON pw.BANCO = pb.BANCO AND pw.`CEDULA DE IDENTIDAD` = $ci";
+    $sql = "SELECT * FROM sys_user ";
     $statement = $db->prepare($sql);
     $statement->execute();
-    $rowInfo = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
+    $users = $statement->fetchAll();
+    return $users;
     $db = null;
-    return $rowInfo;
 }
-*/
 
-
-function getTipoDeUsuario($ci){
+function getUserById($id){
     $db = conect();
-    /* Obtiene datos del usuario */
-    $sql = "SELECT tipo_de_usuario FROM sys_user WHERE ci = '$ci'";
+    $sql = "SELECT * FROM sys_user WHERE id = $id";
     $statement = $db->prepare($sql);
     $statement->execute();
-    $rowInfo = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    return $user;
     $db = null;
-    return $rowInfo['tipo_de_usuario'];
 }
+
 
 function getUserInfo(){
-    /*
-    $db = conect();
-    $user = getUser();
-    $ci = $user['CI'];
 
-    $sql = "SELECT pw.*, pb.`NOMBRE DEL BANCO` AS NOMBREBANCO FROM pddirweb pw INNER JOIN prparban pb ON pw.BANCO = pb.BANCO AND `CEDULA DE IDENTIDAD` = '$ci'";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $rowInfo = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $rowInfo;
-    */
-}
-
-/*
-function getCiudad($key){
-    $db = conect();
-    $sql = "SELECT * FROM pdparciud WHERE CIUDAD = '$key';";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $ciudad = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
-    $db = null;
-    return $ciudad['DESCRIPCION'];
-}
-*/
-
-/*
-function getLocalidad($key){
-    $db = conect();
-    $sql = "SELECT * FROM pdparloca WHERE LOCALIDAD = '$key';";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $localidad = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
-    $db = null;
-    return $localidad['DESCRIPCION'];
-}
-*/
-
-/*
-function getBarrio($key){
-    $db = conect();
-    $sql = "SELECT * FROM pdparbarr WHERE BARRIO = '$key';";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $barrio = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
-    $db = null;
-    return $barrio['DESCRIPCION'];
-}
-*/
-
-/*
-function getBarrios(){
-    $db = conect();
-    $sql = "SELECT * FROM pdparbarr;";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $barrios = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $barrios;
-   
-}
-*/
-
-/*
-function getCiudades(){
-    $db = conect();
-    $sql = "SELECT * FROM pdparciud";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $ciudades = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $ciudades;
-   
 }
 
 
 
-function getLocalidades(){
+function activateUserState($id,$active){
     $db = conect();
-    $sql = "SELECT * FROM pdparloca";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $localidades = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $localidades;
-   
-}
-*/
-/*
-function getPrestamos($ci){
-    $db = conect();
-    $sql = "SELECT * FROM prw805web WHERE `CEDULA DE IDENTIDAD` = $ci";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $prestamos = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $prestamos;
-   
-}
-*/
-/*
-function getTipoDePrestamo($id){
-    $db = conect();
-    
-    $sql = "SELECT * FROM prw_clase_de_prestamo WHERE id = $id";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $tipoPrestamo = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
-    $db = null;
-    return $tipoPrestamo['DESCRIPCION'];
-   
-}
-*/
-
-/*
-function getTarjetas($ci){
-    $db = conect();
-
-    $sql = "SELECT * FROM tctarweb WHERE `NUMERO DE DOCUMENTO` = $ci";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $tarjetas = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $tarjetas;
-   
-}
- * 
- * */
- 
-/*
-function getAportes($ci){
-    $db = conect();
-
-    $sql = "SELECT * FROM apw117web WHERE `CEDULA DE IDENTIDAD` = $ci";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $aportes = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $aportes;
-   
-}
-*/
-
-/*
-function getJubilados($ci){
-    $db = conect();
-    $sql = "SELECT * FROM jubliqweb WHERE `CEDULA DE IDENTIDAD` = $ci";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $jubilados = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $jubilados;
-   
-}
- * 
- */
-
-/*
-function getCodigoOperacion($codigo){
-    $db = conect();
-    $sql = "SELECT * FROM maetabcod WHERE `CODIGO OPERACION` = $codigo";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $codigos = $statement->fetch(PDO::FETCH_ASSOC);
-    //print_r($rowInfo);
-    $db = null;
-    return $codigos['DESCRIPCION'];
-   
-}
-*/
-/*
-function getLocales(){
-    $db = conect();
-    $sql = "SELECT * FROM aqpartloc;";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $locales = $statement->fetchAll();
-    //print_r($rowInfo);
-    $db = null;
-    return $locales;
-   
-}
- * 
- */
-
-/*
-function getProfile($ci){
-     $db = conect();
-     
-    $sql = "SELECT * FROM sys_user WHERE ci = $ci";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $rowInfo = $statement->fetch(PDO::FETCH_ASSOC);
-    $db = null;
-    if(($rowInfo[$ci])>0){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-*/
-
-function activateUserState($ci){
-    $db = conect();
-    
-    $sql = "SELECT active FROM sys_user WHERE ci  = '$ci' ";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $active = $statement->fetch(PDO::FETCH_ASSOC);
-    error_log("ESTADO ACTIVE:".$active['active']);
     $sql = "UPDATE sys_user SET active = ";
-    $sql .= $active['active'] == 1 ? 0 : 1;
-    $sql .= " WHERE ci = '$ci'";
+    $sql .= $active;
+    $sql .= " WHERE id = '$id'";
     $statement = $db->prepare($sql);
     $statement->execute();
-    $sql = "SELECT active FROM sys_user WHERE ci  = '$ci' ";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $active = $statement->fetch(PDO::FETCH_ASSOC);
-    error_log("ESTADO ACTIVE:".$active['active']);
-    
+       
     $db = null;
-    return $active['active'];
-    
         
+}
+
+function verifyUserExist($username){
+    $db = conect();
+    $sql = sprintf("SELECT count(*) AS size FROM sys_user WHERE username='%s'",
+        mysql_real_escape_string($username));
+
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $item = $statement->fetch(PDO::FETCH_ASSOC);
+    $db = null;
+  if( $item['size'] > 0 ) {
+    addError('El usuario ya se encuentra registrado');
+    return false;
+  }else{
+      return true;
+  }
+}
+
+function userUpdate(){
+    $db = conect();
+          $sql_user = "UPDATE sys_user SET nombre = '%s',password = md5('%s'),";
+          $sql_user .= "active = %s,perfil_de_usuario = 'Administrador',fecha_registro = now() ";
+          $sql_user .= " WHERE username = '%s'";
+          $sql_user = sprintf($sql_user,          
+          mysql_real_escape_string($_POST['nombre']),
+          mysql_real_escape_string($_POST['password']),
+          mysql_real_escape_string($_POST['active']),
+          mysql_real_escape_string($_POST['username']));
+          $statement = $db->prepare($sql_user);
+          if($statement->execute()){
+              setSuccess("Modificado con exito");
+              error_log("MODIFICADO: ".$sql_user);
+              redirect("../users.php");
+          }else{
+              addError("No se pudo crear el usuario");
+              redirect("../edit-user-action.php");
+          }
+          
+}
+
+
+function newUserInsert(){
+        $db = conect();
+          $sql_user = "INSERT INTO sys_user (username,nombre,password,";
+          $sql_user .= "active,perfil_de_usuario,fecha_registro)";
+          $sql_user .= " VALUES ('%s','%s',md5('%s'),%s,'Administrador',now())";
+          $sql_user = sprintf($sql_user,
+          mysql_real_escape_string($_POST['username']),
+          mysql_real_escape_string($_POST['nombre']),
+          mysql_real_escape_string($_POST['password']),
+          mysql_real_escape_string($_POST['active']));
+          $statement = $db->prepare($sql_user);
+          if($statement->execute()){
+              setSuccess("Creado con exito");
+          }else{
+              addError("No se pudo crear el usuario");
+          }
+          redirect("../users.php");
 }
 
 function getBannerNovedades(){

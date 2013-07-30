@@ -22,8 +22,13 @@ $db = conect();
                                 }else{
                                    echo "<div class='item'>";
                                 }
-
-                                echo "<div align='center'><img align='center' src='../admin/resources/images/banner/".$banner['banner_name']."' alt=".$banner['banner_title']."></div>";   
+                                if($banner['id_product'] > 0){
+                                echo "<div align='center'><a href='./product-detail.php?product-id=".$banner['id_product']."'><img align='center' src='../admin/resources/images/banner/".$banner['banner_name']."' alt=".$banner['banner_title']."></a></div>";   
+                                }else{
+                                    echo "<div align='center'><a href='#'><img align='center' src='../admin/resources/images/banner/".$banner['banner_name']."' alt=".$banner['banner_title']."></a></div>";   
+                                 
+                                }
+                                
                                 echo "<div class='container'></div>";
                                 ?>
                                 <div class="carousel-caption">
