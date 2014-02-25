@@ -24,6 +24,7 @@ $product = getProductById($product_id);
     <meta name="author" content="">
     <?php require './inc/header.php'; ?>
        <link rel="stylesheet" type="text/css" href="./resources/bootstrap/assets/css/bootstrap-fileupload.css" media="all" />
+       <link rel="stylesheet" type="text/css" href="./resources/editor/jqte/jquery-te-1.4.0.css" media="all" />
     <style type="text/css">
           body {
             padding-top: 60px;
@@ -75,15 +76,21 @@ $product = getProductById($product_id);
                             }
                             ?>
                      </select>
-                             
+                  </div>
+                  <div class="span6">
                     <h3>Descripcion</h3>
-                    <textarea name="product-description" style="width:280px" rows="5"id="product-description" required placeholder="Descripcion de producto"><?= $product['description']?></textarea>
+                    <textarea name="product-description" class="jqte-test" id="product-description" required placeholder="Descripcion de producto"><?= $product['description']?></textarea>
 
                   </div>
-                  <div class="span4">
+                </div>
+            <hr>
+           <div class="row">
+                  <div class="span12">
                     <h3>Imagen</h3>
+                    <!-- Ruta de imagen por defecto-->
+                    <input type="hidden" value="<?=$product['image']?>" name="product-img-default" id="product-img-default"> 
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="box-img">
-                        <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="../img/default.png" /></div>
+                        <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 326px;"><img src="../img/products/<?= $product['image']?>"/></div>
                       <div>
                         <span class="btn btn-file">
                             <span class="fileupload-new"  >Seleccione un banner</span>
@@ -95,8 +102,10 @@ $product = getProductById($product_id);
                       </div>
                     </div>
                   </div>
-                  
-                 <div class="span3">
+             <hr>
+           </div>
+            <div class="row">
+                 <div class="span12">
                      <h3>Estado</h3>
                      <select name="product-state" id="product-state">
                          <?php $selected_1 = $selected_2 = "" ?>
@@ -148,9 +157,11 @@ $product = getProductById($product_id);
                                     $('ul', this).fadeOut();	 // fadeOut will hide the sub cat menu		
                             }
                     );
+                      $('#product-description').jqte({color: false});
             });
         </script>
         <script src="./resources/ajax/ajaxFunctions.js"></script>
-         <script src="./resources/bootstrap/assets/js/bootstrap-fileupload.js"></script>
+        <script src="./resources/bootstrap/assets/js/bootstrap-fileupload.js"></script>
+        <script src="./resources/editor/jqte/jquery-te-1.4.0.min.js"></script>
   </body>
 </html>

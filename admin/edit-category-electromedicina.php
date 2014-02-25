@@ -16,7 +16,8 @@ $category = getCategoryByIdElectromedicina($category_id);
     <meta name="description" content="">
     <meta name="author" content="">
     <?php require './inc/header.php'; ?>
-       <link rel="stylesheet" type="text/css" href="./resources/bootstrap/assets/css/bootstrap-fileupload.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./resources/bootstrap/assets/css/bootstrap-fileupload.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./resources/editor/jqte/jquery-te-1.4.0.css" media="all" />
     <style type="text/css">
           body {
             padding-top: 60px;
@@ -46,21 +47,24 @@ $category = getCategoryByIdElectromedicina($category_id);
           </div>
             <!-- Example row of columns -->
                 <div class="row">
-                  <div class="span4">
+                  <div class="span10">
                     <input type="hidden" name="category-id" id="category-id" value="<?=$category['id']?>" >  
                     <h3>Nombre</h3>
+                    <input type="hidden" value="<?=$category['image']?>" name="category-img-default" id="product-img-default"> 
                     <input type="text" name="category-name" style="width:280px" id="category-name" value="<?=$category['name']?>" required placeholder="Nombre de categoria">
                     <h3>Titulo</h3>
                     <input type="text" name="category-title" style="width:280px" id="category-title" value="<?=$category['title']?>" required placeholder="Titulo de categoria">
 
                     <h3>Descripcion</h3>
-                    <textarea name="category-description" style="width:280px" rows="5"id="category-description" required placeholder="Descripcion de categoria"><?=$category['description']?></textarea>
+                    <textarea name="category-description" id="category-description" required placeholder="Descripcion de categoria"><?=$category['description']?></textarea>
 
                   </div>
-                  <div class="span4">
+                </div>
+              <div class="row">                
+                  <div class="span10">
                     <h3>Imagen</h3>
                     <div class="fileupload fileupload-new" data-provides="fileupload" id="box-img">
-                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 250px; height: 200px;"><img src="../img/default.png"/></div>
+                      <div id="banner-thumbnail"class="fileupload-preview thumbnail" style="width: 326px; "><img src="../img/categories/<?=$category['image']?>"/></div>
                       <div>
                         <span class="btn btn-file">
                             <span class="fileupload-new"  >Seleccione una imagen</span>
@@ -72,20 +76,21 @@ $category = getCategoryByIdElectromedicina($category_id);
                       </div>
                     </div>
                   </div>
-                  
-                 <div class="span3">
-                     <h3>Estado</h3>
-                     <select name="category-state" id="category-state">
-                         <?php $selected_1 = $selected_2 = "" ?>
-                         <?= $category['active'] == 1 ? $selected_1 = "selected" : $selected_2="selected" ?>
-                         <option value='1' <?= $selected_1?> >Activo</option>
-                         <option value='0' <?= $selected_2?> >Inactivo</option>
-                     </select>
-                     <p>Puede activarlo mas tarde</p>
-                     <hr>
-                     
-                 </div>
+              </div>
+              <div class="row">
+                <div class="span10">
+                    <h3>Estado</h3>
+                    <select name="category-state" id="category-state">
+                        <?php $selected_1 = $selected_2 = "" ?>
+                        <?= $category['active'] == 1 ? $selected_1 = "selected" : $selected_2="selected" ?>
+                        <option value='1' <?= $selected_1?> >Activo</option>
+                        <option value='0' <?= $selected_2?> >Inactivo</option>
+                    </select>
+                    <p>Puede activarlo mas tarde</p>
+                    <hr>
+
                 </div>
+              </div>
             </form>
         </div>
       <hr>
@@ -125,10 +130,12 @@ $category = getCategoryByIdElectromedicina($category_id);
                                     $('ul', this).fadeOut();	 // fadeOut will hide the sub cat menu		
                             }
                     );
+                    $('#category-description').jqte({format: false,sub:false,sup:false});
             });
         </script>
         <script src="./resources/ajax/ajaxFunctions.js"></script>
          <script src="./resources/bootstrap/assets/js/bootstrap-fileupload.js"></script>
+         <script src="./resources/editor/jqte/jquery-te-1.4.0.min.js"></script>
   </body>
 </html>
 

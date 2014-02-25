@@ -58,10 +58,12 @@ $category_name = $category['title'];
               }
               .producto_model{
                   text-align: center;
-                  color:#fff;
+                  color:#3C5774;
                   font-weight: bold;
                   font-size: 16px;
                   padding-top:5px;
+                  background: #fff;
+                  height: 27px;
               }
           </style>
            <h3 style="font-family:'SansSerfRegular';margin-left: 25px;color: #3860a5"><?=$category_name?></h3>
@@ -80,10 +82,11 @@ $category_name = $category['title'];
                    ?>
                    <!-- Inicio productos -->
                     <div class="producto" >
-                       <div class="producto_img" style="background: #3C5777 url(../img/products/<?=$product['image']?>) no-repeat;">
-                          <div class="producto_model">
+                      <div class="producto_model">
                                <?=$product['title']?>
                           </div>
+                       <div class="producto_img" style="background: #ffffff url(../img/products/<?=$product['image']?>) no-repeat center;background-size:cover">
+                          
                        </div>
                        <div class="producto_model_more">
                             <a class="btn" href="./product-detail.php?product-id=<?=$product['id']?>">+ Ver mas</a>

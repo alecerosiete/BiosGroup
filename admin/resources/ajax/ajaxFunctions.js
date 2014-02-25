@@ -1,5 +1,5 @@
 $(document).ready(function(){
-   
+    
     /* Boton guardar info de banner */
     $('#btn-guardar-banner').click(function(){
        

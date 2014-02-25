@@ -60,8 +60,8 @@ $categories = getActiveCategories('category');
                         foreach ($categories as $category) { 
                          
                    ?>
-                    <div class="producto" >
-                        <div class="producto_img" style="background: #475875  url(../img/categories/<?=$category['image']?>)">
+                    <div class="producto_categoria" >
+                        <div class="producto_img" style="background: #3C5774 url(../img/categories/<?=$category['image']?>) no-repeat center;background-size:cover">
                             
                             
                              <div class="producto_more" style="float:left">

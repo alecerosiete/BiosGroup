@@ -329,11 +329,10 @@ function updateCategoryElectromedicina($name,$title,$description,$image_name,$ac
 
 function saveNewproduct($title,$description,$image_name,$active,$product_category_id,$product_category_name,$table_product){
     $db = conect();
-    $sql = "INSERT INTO $table_product(id,category_id,category_name,title,description,image,image_icon,active,registered,lastUpdate) VALUES(NULL,$product_category_id,'$product_category_name','$title','$description','$image_name','$image_name',$active,now(),now());";
+    $sql = "INSERT INTO $table_product(id,category_id,category_name,title,description,image,image_icon,active,registered,lastUpdate) VALUES(NULL,$product_category_id,'$product_category_name','$title',?,'$image_name','$image_name',$active,now(),now());";
     $statement = $db->prepare($sql);
-    
-    if($statement->execute())
-        error_log("OK");
+    if($statement->execute(array($description)))
+error_log("---------------------Ok: ".$sql);
     else {
         error_log("NO");
     }

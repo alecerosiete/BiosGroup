@@ -3,18 +3,23 @@ require '../inc/session.inc';
 assertUser();
 require '../inc/conexion-functions.php';
 require '../inc/sql-functions.php';
-
+$a = explode(" ",microtime(false));
 $uploaddir = '../../img/products/'; 
-$file = $uploaddir.string2url(basename($_FILES['product_img']['name'])); 
+$file = $uploaddir.string2url(basename($a[1].$_FILES['product_img']['name'])); 
 if(basename($_FILES['product_img']['name']) != ""){
+  
     if (!move_uploaded_file($_FILES['product_img']['tmp_name'], $file)) { 
         error_log("Error al subir la imagen");
         addError("Error al cargar la imagen");
         redirect("../product_electromedicina.php");
     }
-    $img_name = string2url(basename($_FILES['product_img']['name']));
+    $img_name = string2url(basename($a[1].$_FILES['product_img']['name']));
 }else{
-    $img_name = "default.png";
+  if($_POST['product-img-default']==""){
+     $img_name = "default.png";
+  }else{
+    $img_name = $_POST['product-img-default'];
+  }
 }
 $id = $_POST['product-id'];
 $title = $_POST['product-title'];

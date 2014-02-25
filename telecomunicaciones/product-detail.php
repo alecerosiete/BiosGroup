@@ -51,12 +51,12 @@ $product = getProductById($product_id);
                     width: 900px;
                     height: 364px;
                     border:8px solid #dfdfdf;
-                    background: #EFE6E7
+                    background: #ffffff
                 }
                 .producto_detalle_img{
                     float:left;
                     width: 326px;
-                    background:  #3C5777;
+                    background:  #ffffff;
                     height: 100%;
                     
                 }
@@ -78,19 +78,21 @@ $product = getProductById($product_id);
                <div class="span11" >
                    <!-- inicio producto -->
                     <div class="producto_detalle" >
-                        <div class="producto_detalle_img">
-                            <img width="326px"  src="../img/products/<?=$product['image']?>">
-                        </div>
-                        <div class="producto_detalle_desc">
+                      <div class="producto_detalle_img" style="background: #ffffff  url(../img/products/<?=$product['image']?>) no-repeat center; background-size:contain;">
+                      </div>
+                        <div class="producto_detalle_desc" >
+                          <div style="height: 365px;overflow-y:auto">
                             <h3><?=$product['title']?></h3>
                             <h5>CARACTERISTICAS</h5>
                             <p>
                                 <?=$product['description']?>
                             </p>
-                            <a style="margin-top:180px;" href="javascript:history.go(-1)" class="btn">Atras</a>
-                        </div>
-                        
-                            
+                          </div>
+                         
+                       </div>
+                       <div class="span11">
+                              <a style="margin-top:15px;" href="javascript:history.go(-1)" class="btn">Atras</a>
+                       </div>  
                     </div>
                    <!-- fin producto -->
                </div>
